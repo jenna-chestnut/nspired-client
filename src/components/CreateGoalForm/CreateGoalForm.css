@@ -1,0 +1,81 @@
+.create-goal {
+    padding-top: 45px;
+    margin: auto;
+    width: 90%;
+}
+
+.create-goal legend {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.create-goal fieldset {
+    font-size: 20px;
+    border: none;
+    margin-bottom: 30px;
+    text-align:center;
+}
+
+.create-goal input {
+    margin: 20px auto;
+    width: 35%;
+    margin-bottom: 30px;
+}
+
+.create-goal label {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.create-goal button {
+    font-size: 18px;
+    display: block;
+    margin: 0 auto;
+}
+
+.timeframe-buttons {
+    display: flex;
+    margin: 20px auto;
+    justify-content: space-between;
+}
+
+.timeframe-buttons input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.timeframe-buttons label {
+    font-size: 18px;
+    padding: 8px;
+    border: 2px #d6d6d6 solid;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+  
+.timeframe-buttons input[type="radio"]:checked + label {
+    background-color: white;
+}
+  
+button:hover,
+  input[type="submit"]:hover,
+  .timeframe-buttons input[type="radio"]:hover + label {
+    background-color: rgb(255, 208, 0);
+    border: 1px solid black;
+}
+  
+.timeframe-buttons input[type="radio"]:focus + label {
+    border: 1px solid black;
+}
+
+textarea {
+    display: block;
+    width: 90%;
+    margin: 10px;
+}
+
+@media all and (min-width:600px) {
+    .create-goal {
+        width: 50%;
+    }
+}

@@ -1,0 +1,76 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.dashboard .win-list {
+    margin: 20px auto;
+}
+
+.dashboard .item {
+    padding-bottom: 45px;
+}
+
+.dash-win {
+    text-align: center;
+}
+
+.dashboard #delete-win, .dashboard #win-win {
+    padding: 0;
+}
+
+#delete-win:hover {
+    background-color: transparent;
+    border-radius: 35px;
+    box-shadow: 0 5px 15px rgba(255, 73, 143, 0.4);
+}
+
+#win-win:hover {
+    background-color: transparent;
+    box-shadow: 0 5px 15px rgba(94, 255, 73, 0.4);
+}
+
+@media all and (min-width: 900px) {
+    .dashboard {
+        flex-direction: row;
+        padding: 0 40px 0 0;
+    }
+    .dashboard .item {
+        margin-top: 45px;
+    }
+    .dashboard .item-double .item-and-options {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .item-and-options {
+        width: 95%;
+        height: 150px;
+        margin: 0 auto;
+    }
+    .dashboard #delete-win, .dashboard #win-win {
+        position: absolute;
+    }
+    #delete-win {
+        margin-top: 70px;
+    }
+    .dashboard #win-win {
+        margin-top: 15px;
+    }
+    .dashboard .win-item h3 {
+        float: right;
+        margin: auto;
+        padding-left: 30px;
+    }
+    .dashboard .win-item span {
+        margin-right: 20px;
+        float: right;
+    }
+}

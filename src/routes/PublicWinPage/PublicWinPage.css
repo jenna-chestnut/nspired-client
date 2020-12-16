@@ -1,0 +1,68 @@
+.view-pub-win {
+    text-align: center;
+}
+
+.view-pub-win .upvotes {
+    width: 100px;
+    font-size: 25px;
+    margin: 0 auto;
+}
+
+.advice-column {
+    width: 95%;
+    margin: 0 20px;
+    text-align: left;
+    padding-bottom: 35px;
+    padding-right: 10px;
+}
+
+.advice-column h3 {
+    font-size: 25px;
+}
+
+.advice-column p {
+    margin-bottom: 0;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 0;
+    margin-right: 30px;
+}
+
+#clone-goal {
+    font-size: 25px;
+    border: 2px grey solid;
+    margin: auto 10px;
+}
+
+#clone-goal:hover {
+    background-color: yellow;
+}
+
+.win-item-pubwin {
+    display: flex;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 40px;
+    flex-direction: column;
+}
+
+@media all and (min-width: 600px) {
+    .advice-column {
+        width: 60%;
+        margin: auto;
+        padding-left: 20px;
+    }
+    .win-item-pubwin {
+        display: flex;
+        flex-direction: row;
+        margin: 45px auto;
+        width: 60%;
+        justify-content: space-evenly;
+    }
+    .win-item-pubwin .upvotes {
+        vertical-align: middle;
+        margin: auto 10px;
+    }
+}

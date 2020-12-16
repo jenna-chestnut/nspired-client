@@ -1,0 +1,51 @@
+.log-in {
+    margin: 40px auto;
+    width: 70%;
+}
+
+.log-in legend {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.log-in fieldset {
+    font-size: 20px;
+    border: none;
+}
+
+.log-in input {
+    margin: 20px auto;
+    width: 100%;
+}
+
+.log-in button {
+    font-size: 20px;
+    display: block;
+    margin: 20px auto;
+}
+
+.log-in label {
+    display: inline-block;
+    text-align: right;
+    height: 30px;
+    width: 150px;
+    margin: auto 5px;
+}
+.log-in p {
+    margin: 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+.log-in a {
+    margin-left: 10px;
+}
+
+@media all and (min-width: 600px) {
+    .log-in {
+        width: 50%;
+    }
+    .log-in input {
+        width: 50%;
+    }
+}

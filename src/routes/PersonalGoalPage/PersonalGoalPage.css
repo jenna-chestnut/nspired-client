@@ -1,0 +1,46 @@
+.view-goal {
+    text-align: center;
+}
+
+.view-goal .win-item {
+    border: none;
+    width: 95%;
+}
+
+.view-goal h3 {
+    font-size: 25px;
+}
+
+.view-goal p {
+    font-size: 20px;
+}
+
+.view-goal .group {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+    margin: 15px auto;
+}
+
+.view-goal #delete-win, .view-goal #win-win {
+    border: none;
+    font-size: 35px;
+    background-color: white;
+}
+
+.reminder p {
+    padding: 3%;
+    margin-top: 0;
+}
+
+.reminder h4 {
+    font-size: 20px;
+    font-weight: lighter;
+    margin: 25px 0 0 0;
+}
+
+@media all and (min-width:600px) {
+    .view-goal .win-item {
+        width: 60%;
+    }
+}

@@ -1,0 +1,59 @@
+.share-win-background {
+    padding-top: 10px;
+    background-image: url('../../images/confettigif.gif'); 
+    text-align: center;
+    padding-bottom: 35px;
+}
+
+.you-did-it {
+    margin: 10px auto 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffffc0;
+    width: 100%;
+}
+
+.share-win {
+    background-color: #ffffffc0;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.share-win h2 {
+    padding-top: 10px;
+}
+
+.share-win label {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.share-win textarea {
+    width: 75%;
+    height: 100px;
+}
+
+.share-win button {
+    font-size: 18px;
+    display: block;
+    margin: 25px auto;
+}
+
+.share-win h3 {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+@media all and (min-width: 600px) {
+    .share-win {
+        width: 75%;
+    }
+    .share-win textarea {
+        width: 45%;
+    }
+    .you-did-it {
+        width: 45%;
+    }
+}

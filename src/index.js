@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-import App from './App';
+import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
+import { WinWallProvider } from './contexts/WinWallContext';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
+  <WinWallProvider>
     <App />
-  </React.StrictMode>,
+  </WinWallProvider>
+  </BrowserRouter>
+  ,
   document.getElementById('root')
 );
 

@@ -1,0 +1,14 @@
+.win-wall h2 {
+    text-align: center;
+}
+
+.win-wall {
+    width: 90%;
+    margin: 20px auto;
+}
+
+@media all and (min-width:600px) {
+    .win-wall {
+        width: 70%;
+    }
+}

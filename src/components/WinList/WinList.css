@@ -1,0 +1,19 @@
+.win-list p {
+    text-align: right;
+    font-size: 25px;
+    margin: 0 25px;
+}
+
+.win-wall .win-list {
+    margin: 20px auto;
+}
+
+.win-list {
+    padding-left: 0;
+}
+
+@media all and (min-width:600px) {
+    .win-list {
+        width: 80%;
+    }
+}

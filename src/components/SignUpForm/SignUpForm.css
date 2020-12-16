@@ -1,0 +1,57 @@
+.sign-up {
+    margin: 40px auto;
+    width: 70%;
+}
+
+.sign-up legend {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.sign-up fieldset {
+    font-size: 20px;
+    border: none;
+}
+
+.sign-up input {
+    margin: 20px auto;
+    width: 100%;
+}
+
+.sign-up label {
+    display: inline-block;
+    text-align: right;
+    width: 200px;
+    height: 30px;
+    margin: auto 5px;
+}
+
+.sign-up button {
+    font-size: 18px;
+    display: block;
+    margin: 20px auto;
+}
+
+.sign-up p {
+    margin: 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+.sign-up a {
+    margin-left: 10px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+@media all and (min-width: 600px) {
+    .sign-up {
+        width: 50%;
+    }
+    .sign-up input {
+        width: 40%;
+    }
+}

@@ -1,0 +1,43 @@
+.group {
+  display: flex;
+}
+
+.item {
+  flex: 1;
+}
+
+.item-double {
+  flex: 2;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(255, 196, 0);
+}
+
+img {
+  width: 100%;
+}
+
+.inspiration {
+  text-align: left;
+  padding-left: 3%;
+  margin-top: 0;
+  font-style: italic;
+  color: grey;
+}
+
+.goal-title {
+  text-align: center;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+@media all and (min-width: 600px) {
+  /* main {
+      padding: 3%;
+  } */
+}

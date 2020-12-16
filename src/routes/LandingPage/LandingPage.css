@@ -1,0 +1,36 @@
+.landing-page {
+    margin: 0 auto;
+    padding-top: 45px;
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-page p {
+    font-size: 25px;
+    text-align: center;
+    margin: 10px;
+}
+
+.landing-page button {
+    margin: 10px;
+    font-size: 18px;
+}
+
+.nspired-intro {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 45px;
+}
+
+@media all and (min-width:600px) {
+    .landing-page {
+        flex-direction: row;
+        padding: 25px;
+    }
+    .nspired-intro {
+        margin-bottom: 10px;
+    }
+}

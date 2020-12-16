@@ -1,0 +1,57 @@
+.win-item {
+    display: flex;
+    margin: 15px auto;
+    border: 2px #d6d6d6 solid;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.win-item span {
+    margin: auto 10px;
+}
+
+.win-item h3 {
+    margin: 20px 10px;
+}
+
+.item-and-options {
+    display: flex;
+    width: 100%;
+}
+
+.share-win .win-item {
+    width: 99%;
+}
+
+.item-and-options button {
+    height: 65px;
+    width: 65px;
+    vertical-align: middle;
+    font-size: 35px;
+    border: none;
+    background-color: transparent;
+    margin: auto;
+}
+
+.item-and-options button:hover {
+    background-color: rgb(255, 208, 0);
+}
+
+.item-and-options h2 {
+    font-size: 18px;
+}
+.upvotes {
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto 5px;
+    width: 55px;
+    font-size: 20px;
+}
+
+.upvotes img {
+    width: 90%;
+}
+
+@media all and (min-width:600px) {
+    
+}
