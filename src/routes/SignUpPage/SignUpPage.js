@@ -8,15 +8,16 @@ export default class SignUpPage extends Component {
     },
   }
 
-//   handleRegistrationSuccess = user => {
-//     const { history } = this.props
-//     history.push('/login')
-//   }
+  handleSignUpSuccess = () => {
+    const { location, history } = this.props
+    const destination = (location.state || {}).from || '/dashboard'
+    history.push(destination)
+  }
 
   render() {
     return (
       <section className='login'>
-        <SignUpForm />
+        <SignUpForm onSignUpSuccess={this.handleSignUpSuccess}/>
       </section>
     )
   }

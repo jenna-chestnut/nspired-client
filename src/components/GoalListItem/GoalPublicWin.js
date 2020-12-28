@@ -14,7 +14,6 @@ class GoalPublicWin extends React.Component {
   }
   render() {
     const { upvote_count, goal_name, creator, id } = this.props.win;
-    console.log(this.props.win)
 
       return (
         <div className="item-and-options">

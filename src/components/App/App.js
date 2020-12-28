@@ -19,7 +19,10 @@ class App extends React.Component {
   render() {
       return (
         <div className="App">
+
+          <header className="h-group">
           <Header />
+          </header>
 
           <main> 
           <InspoQuote />
@@ -28,7 +31,7 @@ class App extends React.Component {
           <Route exact path='/' component={LandingPage} />
 
           <Route path='/sign-up' component={SignUpPage} />
-          <Route path='/log-in' component={LoginPage} />
+          <Route path='/login' component={LoginPage} />
 
           <Route exact path='/win-wall' component={PublicWinWallPage} />
           <Route path='/win-wall/:winId' component={PublicWinPage} />

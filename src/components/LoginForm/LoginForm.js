@@ -1,7 +1,7 @@
 import './LoginForm.css';
 import React from 'react';
 import AuthService from '../../services/auth-api-service';
-import TokenService from ''
+import TokenService from '../../services/token-service';
 
 class LoginForm extends React.Component {
 	static defaultProps = {
@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
 	
 	  state = { error: null }
 
-	handleSubmitBasicAuth = ev => {
+	handleSubmit = ev => {
 		ev.preventDefault()
 		const { user_name, password } = ev.target;
 	
@@ -26,15 +26,21 @@ class LoginForm extends React.Component {
 		})
 		.catch(err => {
 		  this.setState({
-			error: err
+			error: err.error
 		  })
 		})
 	  }
 
 	render() {
+		const { error } = this.state;
+
 		return (
-			<form className="log-in">
+			<form className="log-in" onSubmit={this.handleSubmit}>
 				<fieldset>
+				<div role='alert' className='form-error'>
+          			{error && <p>{error}</p>}
+        		</div>
+
 					<legend>Log In</legend>
 
 					<div className="form-group">
@@ -44,7 +50,7 @@ class LoginForm extends React.Component {
 
 					<div className="form-group">
 						<label htmlFor="password">Password</label>
-						<input type="text" name="password" />
+						<input type="password" name="password" />
 					</div>
 
 					<button type="submit">Submit</button>
