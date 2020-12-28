@@ -24,10 +24,9 @@ export default class Dashboard extends Component {
 		userGoals = userGoals.filter(toDo => toDo.completed === false)
 		.map((item, idx) => {
 			return (
-				<GoalPrivateToDo key={idx}>
+				<GoalPrivateToDo key={idx} id={item.goal_id}>
 					<GoalListItem 
 					toDo={true}
-					id={item.goal_id}
 					name={item.goal_name} 
 					expires={item.expiration}
 					/>

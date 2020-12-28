@@ -15,6 +15,8 @@ const GoalContext = React.createContext({
   clearError: () => { },
   setGoal: () => {},
   setUserGoals: () => {},
+  deleteGoal: () => {},
+  updateGoal: () => {},
   clearGoal: () => {},
   setPersonalNotes: () => {},
   setAdvice: () => {},
@@ -47,6 +49,28 @@ export class GoalProvider extends Component {
     this.setState({ userGoals })
   }
 
+  deleteGoal = goalId => {
+    const newUserGoals = this.state.userGoals
+    .filter(goal => goal.goal_id !== goalId);
+    this.setState({ userGoals: newUserGoals })
+  }
+
+  updateGoal = (goalId, newData, key) => {
+    const newUserGoals = this.state.userGoals
+    .map(goal => {
+      if (goal.goal_id === goalId) {
+        if (key === 'completed') {
+          return {...goal, completed: newData}
+        }
+        if (key === 'is_public') {
+          return {...goal, is_public: newData}
+        }
+      }
+      return goal;
+    });
+    this.setState({ userGoals: newUserGoals })
+  }
+
   setAdvice = advice => {
     this.setState({ advice })
   }
@@ -73,6 +97,8 @@ export class GoalProvider extends Component {
       clearError: this.clearError,
       setGoal: this.setGoal,
       setUserGoals: this.setUserGoals,
+      deleteGoal: this.deleteGoal,
+      updateGoal: this.updateGoal,
       setadvices: this.setAdvice,
       cleargoal: this.cleargoal,
       addAdvice: this.addAdvice,
