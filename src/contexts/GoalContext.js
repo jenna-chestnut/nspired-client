@@ -8,11 +8,13 @@ export const nullGoal = {
 const GoalContext = React.createContext({
   goal: nullGoal,
   userNote: '',
+  userGoals: [],
   advice: [],
   error: null,
   setError: () => {},
   clearError: () => { },
   setGoal: () => {},
+  setUserGoals: () => {},
   clearGoal: () => {},
   setPersonalNotes: () => {},
   setAdvice: () => {},
@@ -24,7 +26,8 @@ export default GoalContext
 export class GoalProvider extends Component {
   state = {
     goal: nullGoal,
-    error: null,
+    userGoals: [],
+    error: null
   };
 
   setError = error => {
@@ -38,6 +41,10 @@ export class GoalProvider extends Component {
 
   setGoal = goal => {
     this.setState({ goal })
+  }
+
+  setUserGoals = userGoals => {
+    this.setState({ userGoals })
   }
 
   setAdvice = advice => {
@@ -59,11 +66,13 @@ export class GoalProvider extends Component {
   render() {
     const value = {
       goal: this.state.goal,
+      userGoals: this.state.userGoals,
       advices: this.state.advice,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
       setGoal: this.setGoal,
+      setUserGoals: this.setUserGoals,
       setadvices: this.setAdvice,
       cleargoal: this.cleargoal,
       addAdvice: this.addAdvice,

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './PublicWinWallPage.css';
 import WinList from '../../components/WinList/WinList';
 import GoalPublicWin from '../../components/GoalListItem/GoalPublicWin';
-import GoalsApiService from '../../services/goals-api-service';
+import GoalsService from '../../services/goals-api-service';
 import WinWallContext from '../../contexts/WinWallContext';
 
 export default class PublicWinWallPage extends Component {
@@ -11,7 +11,7 @@ export default class PublicWinWallPage extends Component {
 	componentDidMount() {
 		this.context.clearError();
 
-		GoalsApiService.getWinWall()
+		GoalsService.getWinWall()
 			.then(this.context.setWinWall)
 			.catch(this.context.setError);
 	}

@@ -5,12 +5,15 @@ import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import { WinWallProvider } from './contexts/WinWallContext';
+import { GoalProvider } from './contexts/GoalContext';
 
 ReactDOM.render(
   <BrowserRouter>
-  <WinWallProvider>
+  <WinWallProvider><GoalProvider>
+    
     <App />
-  </WinWallProvider>
+    
+  </GoalProvider></WinWallProvider>
   </BrowserRouter>
   ,
   document.getElementById('root')
