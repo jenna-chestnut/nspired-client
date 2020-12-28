@@ -2,7 +2,7 @@ import './LandingPage.css';
 import React from 'react';
 import GoalPublicWin from '../../components/GoalListItem/GoalPublicWin';
 import WinList from '../../components/WinList/WinList';
-import GoalsApiService from '../../services/nspired-api-service';
+import GoalsApiService from '../../services/goals-api-service';
 import WinWallContext from '../../contexts/WinWallContext';
 
 class LandingPage extends React.Component {
