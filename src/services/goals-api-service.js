@@ -1,7 +1,10 @@
 import config from '../config'
 import TokenService from './token-service'
 
-const nSpiredApiService = {
+const GoalsService = {
+  // *** WIN WALL ***
+
+  // GET win wall
   getMiniWinWall() {
     return fetch(`${config.API_ENDPOINT}/win-wall/mini`)
       .then(res =>
@@ -18,6 +21,10 @@ const nSpiredApiService = {
           : res.json()
       )
   },
+   
+   // *** GOALS ***
+
+  // GET specific goal - user goal, if not, grab public win
   getGoal(goalId) {
     return fetch(`${config.API_ENDPOINT}/goals/${goalId}`, {
       headers: {
@@ -30,8 +37,10 @@ const nSpiredApiService = {
           : res.json()
       )
   },
-  getGoalAdvice(goalId) {
-    return fetch(`${config.API_ENDPOINT}/goals/${goalId}/advice`, {
+
+  // GET user goals
+  getUserGoals() {
+    return fetch(`${config.API_ENDPOINT}/goals`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
@@ -42,7 +51,9 @@ const nSpiredApiService = {
           : res.json()
       )
   },
-  postGoal(goal_name, user_id) {
+
+  // POST new goal 
+  postNewGoal(newGoal) {
     return fetch(`${config.API_ENDPOINT}/goals`, {
       method: 'POST',
       headers: {
@@ -50,8 +61,7 @@ const nSpiredApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        goal_name,  
-        user_id
+        newGoal
       }),
     })
       .then(res =>
@@ -60,17 +70,17 @@ const nSpiredApiService = {
           : res.json()
       )
   },
-  postAdvice(advice_text, goal_id, user_id) {
-    return fetch(`${config.API_ENDPOINT}/goals/${goal_id}/advice`, {
+
+  // POST user goal (clone existing goal)
+  postUserGoal(goalId, goalData) {
+    return fetch(`${config.API_ENDPOINT}/goals/${goalId}`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json',
-        'authorization': `bearer ${TokenService.getAuthToken()}`
+          'content-type': 'application/json',
+          'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        advice_text,
-        goal_id,
-        user_id
+          goalData
       }),
     })
       .then(res =>
@@ -79,16 +89,17 @@ const nSpiredApiService = {
           : res.json()
       )
   },
-  updateGoalPublic(goal_id) {
+
+  // PATCH to make user goal public or mark complete
+  patchUserGoal(goal_id, data) {
     return fetch(`${config.API_ENDPOINT}/goals/${goal_id}`, {
-      method: 'UPDATE',
+      method: 'PATCH',
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        is_public: true,
-        goal_id
+        data
       }),
     })
       .then(res =>
@@ -96,7 +107,22 @@ const nSpiredApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
-  }
+  },
+
+  // DELETE goal - user goal if cloned, entire goal if owned
+    deleteUserGoal(goal_id) {
+      return fetch(`${config.API_ENDPOINT}/goals/${goal_id}`, {
+        method: 'DELETE',
+        headers: {
+          'authorization': `bearer ${TokenService.getAuthToken()}`
+        }
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json()
+        )
+    }
 }
 
-export default nSpiredApiService
+export default GoalsService

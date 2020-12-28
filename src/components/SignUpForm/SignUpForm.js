@@ -1,7 +1,35 @@
 import './SignUpForm.css';
 import React from 'react';
+import AuthService from '../../services/auth-api-service';
+import TokenService from '../../services/token-service';
 
 class SignUpForm extends React.Component {
+
+	static defaultProps = {
+		onRegistrationSuccess: () => {}
+	  }
+	
+	  state = { error: null }
+	
+	handleSubmit = ev => {
+		ev.preventDefault()
+		const { full_name, user_name, password } = ev.target;
+		const userData = { 
+			full_name: full_name.value, 
+			user_name: user_name.value, 
+			password: password.value 
+		};
+
+		AuthService.postRegistration(userData)
+		.then(res => {
+			full_name.value = '';
+			user_name.value = '';
+			password.value = '';
+			TokenService.saveAuthToken(res.authToken);
+			this.props.onRegistrationSuccess();
+		})
+	  }
+
 	render() {
 		return (
 			<>

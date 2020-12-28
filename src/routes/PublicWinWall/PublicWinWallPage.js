@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './PublicWinWallPage.css';
 import WinList from '../../components/WinList/WinList';
 import GoalPublicWin from '../../components/GoalListItem/GoalPublicWin';
-import GoalsApiService from '../../services/nspired-api-service';
+import GoalsApiService from '../../services/goals-api-service';
 import WinWallContext from '../../contexts/WinWallContext';
 
 export default class PublicWinWallPage extends Component {
