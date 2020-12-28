@@ -42,10 +42,11 @@ const GoalsService = {
   getUserGoals() {
     return fetch(`${config.API_ENDPOINT}/goals`, {
       headers: {
+        'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
-      },
+      }
     })
-      .then(res =>
+      .then(res => 
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
@@ -98,9 +99,7 @@ const GoalsService = {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
-      body: JSON.stringify({
-        data
-      }),
+      body: JSON.stringify(data),
     })
       .then(res =>
         (!res.ok)
@@ -120,7 +119,7 @@ const GoalsService = {
         .then(res =>
           (!res.ok)
             ? res.json().then(e => Promise.reject(e))
-            : res.json()
+            : res
         )
     }
 }
