@@ -1,6 +1,7 @@
 import './GoalListItems.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import getTimeLeft from '../../services/goal-expiration-service';
 
 class GoalListItem extends React.Component {
   static defaultProps = {
@@ -9,47 +10,22 @@ class GoalListItem extends React.Component {
     id: ''
   }
 
-  getTimeLeft(expiration) {
-    let now = new Date();
-    let due = new Date(expiration);
-    let timeDifference = due.getTime() - now.getTime();
-    let daysDiff = Math.floor(timeDifference / (1000 * 3600 * 24 ));
-
-    let dateColor;
-    let timeLeft = `${daysDiff} days left` ;
-    switch(true) {
-      case (daysDiff >= 5) :
-        dateColor = 'green';
-        break;
-      case (daysDiff >= 2) :
-        dateColor = 'gold';
-        break;
-      case (daysDiff = 1) :
-        dateColor = 'red';
-        break;
-      case (daysDiff <= 0) :
-        dateColor = 'grey';
-        timeLeft = `Goal expired`;
-        break;
-      default:
-        dateColor = 'black';
-        break;
-    }
-
-    return <span style={{color: dateColor}}>
-              {timeLeft}
-           </span>
-  }
-
   renderTimeLeft() {
     const { expires } = this.props;
-    const timeLeft = this.getTimeLeft(expires);
+    const timeLeft = getTimeLeft(expires);
     return timeLeft;
   }
 
   render() {
-    const { id, name, creator, toDo = false } = this.props;
-    const link = `/view-goal/${id}`
+    const { id, name, creator, 
+      toDo = false, winWall = false, toShare = false 
+    } = this.props;
+    
+    const link = winWall 
+    ?
+    `/win-wall/${id}`
+    :
+    `/view-goal/${id}`
 
       return (
         <li className="win-item">
@@ -57,6 +33,10 @@ class GoalListItem extends React.Component {
         <span>{toDo
         ?
         this.renderTimeLeft()
+        :
+        toShare
+        ?
+        <i>If you want to go quickly go alone. If you want to go far go together.</i>
         :
         creator
         }</span>

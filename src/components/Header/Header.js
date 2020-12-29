@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 class Header extends React.Component {
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
+    this.setState({})
   }
 
   renderLogoutLink() {
@@ -46,14 +47,14 @@ class Header extends React.Component {
       : this.renderLoginLink();
 
       return (
-        <>
+        <header className="h-group">
         <h1 className="item">nSpired</h1>
         <nav>
         <Link to="/win-wall">Win Wall</Link>
         { links }
         <Link to="/"><img src={homeLogo} alt='Home page'/></Link>
         </nav>
-        </>
+        </header>
       );
     }
 }

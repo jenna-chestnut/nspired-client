@@ -4,16 +4,15 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
-import { WinWallProvider } from './contexts/WinWallContext';
-import { GoalProvider } from './contexts/GoalContext';
+import { GoalProvider } from './contexts/NSpiredContext';
 
 ReactDOM.render(
   <BrowserRouter>
-  <WinWallProvider><GoalProvider>
+  <GoalProvider>
     
     <App />
     
-  </GoalProvider></WinWallProvider>
+  </GoalProvider>
   </BrowserRouter>
   ,
   document.getElementById('root')

@@ -5,11 +5,12 @@ export const nullGoal = {
   user_id: null,
 }
 
-const GoalContext = React.createContext({
+const NSpiredContext = React.createContext({
   goal: nullGoal,
   userNote: '',
   userGoals: [],
   advice: [],
+  winWall: [],
   error: null,
   setError: () => {},
   clearError: () => { },
@@ -21,14 +22,17 @@ const GoalContext = React.createContext({
   setPersonalNotes: () => {},
   setAdvice: () => {},
   addAdvice: () => {},
+  setWinWall: () => {}
 })
 
-export default GoalContext
+export default NSpiredContext
 
 export class GoalProvider extends Component {
   state = {
     goal: nullGoal,
     userGoals: [],
+    advice: [],
+    winWall: [],
     error: null
   };
 
@@ -75,6 +79,10 @@ export class GoalProvider extends Component {
     this.setState({ advice })
   }
 
+  setWinWall = winWall => {
+    this.setState({ winWall })
+  }
+
   cleargoal = () => {
     this.setGoal(nullGoal)
     this.setAdvice([])
@@ -91,7 +99,8 @@ export class GoalProvider extends Component {
     const value = {
       goal: this.state.goal,
       userGoals: this.state.userGoals,
-      advices: this.state.advice,
+      advice: this.state.advice,
+      winWall: this.state.winWall,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
@@ -99,14 +108,15 @@ export class GoalProvider extends Component {
       setUserGoals: this.setUserGoals,
       deleteGoal: this.deleteGoal,
       updateGoal: this.updateGoal,
-      setadvices: this.setAdvice,
+      setAdvice: this.setAdvice,
+      setWinWall: this.setWinWall,
       cleargoal: this.cleargoal,
-      addAdvice: this.addAdvice,
+      addAdvice: this.addAdvice
     }
     return (
-      <GoalContext.Provider value={value}>
+      <NSpiredContext.Provider value={value}>
         {this.props.children}
-      </GoalContext.Provider>
+      </NSpiredContext.Provider>
     )
   }
 }

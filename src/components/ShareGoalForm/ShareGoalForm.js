@@ -1,16 +1,30 @@
 import React from 'react';
+import NSpiredContext from '../../contexts/NSpiredContext';
+import AdviceService from '../../services/advice-api-service';
 
 class ShareGoalForm extends React.Component {
-	// handle input here
+	static contextType = NSpiredContext;
+
+	handleAdviceSubmit = ev => {
+		ev.preventDefault();
+		const { advice_text = null } = ev.target;
+		const { goalId } = this.props.match.params;
+		const advice = { advice_text: advice_text.value };
+
+		AdviceService.postAdvice(goalId, advice)
+		.then(this.context.addAdvice)
+		.then(this.props.onShareSuccess())
+		.catch(this.context.setError)
+	}
 
 	render() {
 		return (
-			<form>
+			<form onSubmit={this.handleAdviceSubmit}>
 				<fieldset>
-					<label htmlhtmlFor="advice">
+					<label htmlFor="advice_text">
 						Give some advice for others who want to accomplish this goal:
 					</label>
-					<textarea id="advice"></textarea>
+					<textarea id="advice_text" name="advice_text"></textarea>
 					<button type="submit">Post to public wall</button>
 				</fieldset>
 			</form>
