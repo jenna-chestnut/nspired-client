@@ -3,10 +3,10 @@ import './PublicWinWallPage.css';
 import WinList from '../../components/WinList/WinList';
 import GoalPublicWin from '../../components/GoalListItem/GoalPublicWin';
 import GoalsService from '../../services/goals-api-service';
-import WinWallContext from '../../contexts/WinWallContext';
+import NSpiredContext from '../../contexts/NSpiredContext';
 
 export default class PublicWinWallPage extends Component {
-  static contextType = WinWallContext;
+  static contextType = NSpiredContext;
 
 	componentDidMount() {
 		this.context.clearError();

@@ -1,12 +1,12 @@
 import React from 'react';
-import GoalContext from '../../contexts/GoalContext';
+import NSpiredContext from '../../contexts/NSpiredContext';
 import GoalsService from '../../services/goals-api-service';
 
 class DeleteWin extends React.Component {
-  static contextType = GoalContext;
+  static contextType = NSpiredContext;
 
   static defaultProps = {
-    onDeleteSuccess: () => {}
+    onGoalDeleted: () => {}
   }
 
   handleDelete = (ev, id) => {
@@ -14,10 +14,10 @@ class DeleteWin extends React.Component {
 
     if (window.confirm('Are you sure you want to delete this goal? This action cannot be undone.')) {
     GoalsService.deleteUserGoal(id)
+    .then(this.props.onGoalDeleted(id))
     .then(this.context.deleteGoal(id))
     .catch(this.context.setError);
     }
-    
   }
 
   render() {

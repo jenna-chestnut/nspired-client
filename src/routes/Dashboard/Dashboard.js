@@ -4,11 +4,11 @@ import WinList from '../../components/WinList/WinList';
 import GoalListItem from '../../components/GoalListItem/GoalListItem';
 import GoalPrivateToDo from '../../components/GoalListItem/GoalPrivateToDo';
 import GoalsService from '../../services/goals-api-service';
-import GoalContext from '../../contexts/GoalContext';
+import NSpiredContext from '../../contexts/NSpiredContext';
 import { Link } from 'react-router-dom';
 
 export default class Dashboard extends Component {
-	static contextType = GoalContext;
+	static contextType = NSpiredContext;
 
 	componentDidMount() {
 		this.context.clearError();
@@ -29,6 +29,7 @@ export default class Dashboard extends Component {
 					toDo={true}
 					name={item.goal_name} 
 					expires={item.expiration}
+					id={item.goal_id}
 					/>
 				</GoalPrivateToDo>
 			);

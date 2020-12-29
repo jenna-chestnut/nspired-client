@@ -3,10 +3,10 @@ import React from 'react';
 import GoalPublicWin from '../../components/GoalListItem/GoalPublicWin';
 import WinList from '../../components/WinList/WinList';
 import GoalsApiService from '../../services/goals-api-service';
-import WinWallContext from '../../contexts/WinWallContext';
+import NSpiredContext from '../../contexts/NSpiredContext';
 
 class LandingPage extends React.Component {
-	static contextType = WinWallContext;
+	static contextType = NSpiredContext;
 
 	componentDidMount() {
 		this.context.clearError();

@@ -1,9 +1,9 @@
 import React from 'react';
-import GoalContext from '../../contexts/GoalContext';
+import NSpiredContext from '../../contexts/NSpiredContext';
 import GoalsService from '../../services/goals-api-service';
 
 class WinWin extends React.Component {
-  static contextType = GoalContext;
+  static contextType = NSpiredContext;
 
   static defaultProps = {
     onGoalCompleted: () => {}

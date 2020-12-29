@@ -1,9 +1,9 @@
-import './SignUpForm.css';
+import './RegistrationForm.css';
 import React from 'react';
 import AuthService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
 
-class SignUpForm extends React.Component {
+class RegistrationForm extends React.Component {
 
 	static defaultProps = {
 		onRegistrationSuccess: () => {}
@@ -27,7 +27,7 @@ class SignUpForm extends React.Component {
 			password.value = '';
 			confirm_password.value = '';
 			TokenService.saveAuthToken(res.authToken);
-			this.props.onSignUpSuccess();
+			this.props.onRegistrationSuccess();
 		})
 	  }
 
@@ -78,4 +78,4 @@ class SignUpForm extends React.Component {
 	}
 }
 
-export default SignUpForm;
+export default RegistrationForm;

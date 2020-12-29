@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LoginForm from '../../components/LoginForm/LoginForm';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import NSpiredContext from '../../contexts/NSpiredContext';
 
 export default class RegistrationPage extends Component {
@@ -11,7 +11,7 @@ export default class RegistrationPage extends Component {
 
   static contextType = NSpiredContext;
 
-  handleLoginSuccess = () => {
+  handleRegistrationSuccess = () => {
     this.context.clearError();
 
     const { location, history } = this.props
@@ -22,7 +22,7 @@ export default class RegistrationPage extends Component {
   render() {
     return (
       <section className='login'>
-        <LoginForm onLoginSuccess={this.handleLoginSuccess}/>
+        <RegistrationForm onRegistrationSuccess={this.handleRegistrationSuccess}/>
       </section>
     )
   }

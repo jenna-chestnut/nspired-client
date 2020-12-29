@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import TokenService from '../../services/token-service'
+import TokenService from '../services/token-service'
 
 export default function PublicOnlyRoute({ component, ...props }) {
   const Component = component
@@ -9,7 +9,7 @@ export default function PublicOnlyRoute({ component, ...props }) {
       {...props}
       render={componentProps => (
         TokenService.hasAuthToken()
-          ? <Redirect to={'/'} />
+          ? <Redirect to={'/dashboard'} />
           : <Component {...componentProps} />
       )}
     />

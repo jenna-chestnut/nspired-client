@@ -19,18 +19,14 @@ const AdviceService = {
   },
 
   // POST advice for specific goal
-  postAdvice(advice_text, goal_id, user_id) {
-    return fetch(`${config.API_ENDPOINT}/goals/${goal_id}/advice`, {
+  postAdvice(goal_id, advice_text) {
+    return fetch(`${config.API_ENDPOINT}/advice/${goal_id}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
-      body: JSON.stringify({
-        advice_text,
-        goal_id,
-        user_id
-      }),
+      body: JSON.stringify(advice_text),
     })
       .then(res =>
         (!res.ok)
