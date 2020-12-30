@@ -12,6 +12,7 @@ const NSpiredContext = React.createContext({
   advice: [],
   upVotes: [],
   winWall: [],
+  inspo: [],
   error: null,
   setError: () => {},
   clearError: () => { },
@@ -28,7 +29,8 @@ const NSpiredContext = React.createContext({
   setUpvotes: () => {},
   addUpvote: () => {},
   deleteUpvote: () => {},
-  setWinWall: () => {}
+  setWinWall: () => {},
+  setInspo: () => {}
 })
 
 export default NSpiredContext
@@ -40,6 +42,7 @@ export class GoalProvider extends Component {
     upVotes: [],
     advice: [],
     winWall: [],
+    inspo: [],
     error: null
   };
 
@@ -140,6 +143,10 @@ export class GoalProvider extends Component {
     this.setAdvice(newAdvice)
   }
 
+  setInspo = inspo => {
+    this.setState({ inspo });
+  }
+
   render() {
     const value = {
       goal: this.state.goal,
@@ -148,6 +155,7 @@ export class GoalProvider extends Component {
       winWall: this.state.winWall,
       error: this.state.error,
       upVotes: this.state.upVotes,
+      inspo: this.state.inspo,
       setError: this.setError,
       clearError: this.clearError,
       setGoal: this.setGoal,
@@ -162,7 +170,8 @@ export class GoalProvider extends Component {
       setWinWall: this.setWinWall,
       cleargoal: this.cleargoal,
       addAdvice: this.addAdvice,
-      deleteAdvice: this.deleteAdvice
+      deleteAdvice: this.deleteAdvice,
+      setInspo: this.setInspo
     }
     return (
       <NSpiredContext.Provider value={value}>
