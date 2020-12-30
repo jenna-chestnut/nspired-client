@@ -10,18 +10,24 @@ const NSpiredContext = React.createContext({
   userNote: '',
   userGoals: [],
   advice: [],
+  upVotes: [],
   winWall: [],
   error: null,
   setError: () => {},
   clearError: () => { },
   setGoal: () => {},
   setUserGoals: () => {},
+  addUserGoal: () => {},
   deleteGoal: () => {},
   updateGoal: () => {},
   clearGoal: () => {},
   setPersonalNotes: () => {},
   setAdvice: () => {},
   addAdvice: () => {},
+  deleteAdvice: () => {},
+  setUpvotes: () => {},
+  addUpvote: () => {},
+  deleteUpvote: () => {},
   setWinWall: () => {}
 })
 
@@ -31,6 +37,7 @@ export class GoalProvider extends Component {
   state = {
     goal: nullGoal,
     userGoals: [],
+    upVotes: [],
     advice: [],
     winWall: [],
     error: null
@@ -51,6 +58,13 @@ export class GoalProvider extends Component {
 
   setUserGoals = userGoals => {
     this.setState({ userGoals })
+  }
+
+  addUserGoal = userGoal => {
+    this.setUserGoals([
+      ...this.state.userGoals,
+      userGoal
+    ])
   }
 
   deleteGoal = goalId => {
@@ -83,6 +97,30 @@ export class GoalProvider extends Component {
     this.setState({ winWall })
   }
 
+  setUpvotes = upVotes => {
+    this.setState({ upVotes })
+  }
+
+  addUpvote = upVote => {
+    this.setState({ 
+      upVotes: {
+        upvotes : [
+          ...this.state.upVotes.upvotes,
+          upVote
+        ],
+        userUpvoted: true
+      } })
+  }
+
+  deleteUpvote = () => {
+    this.setState({
+      upVotes: {
+        upvotes: this.state.upVotes.upvotes,
+        userUpvoted: false
+      }
+    })
+  }
+
   cleargoal = () => {
     this.setGoal(nullGoal)
     this.setAdvice([])
@@ -95,6 +133,13 @@ export class GoalProvider extends Component {
     ])
   }
 
+  deleteAdvice = id => {
+    const newAdvice = this.state.advice.filter(
+      el => el.id !== id
+    )
+    this.setAdvice(newAdvice)
+  }
+
   render() {
     const value = {
       goal: this.state.goal,
@@ -102,16 +147,22 @@ export class GoalProvider extends Component {
       advice: this.state.advice,
       winWall: this.state.winWall,
       error: this.state.error,
+      upVotes: this.state.upVotes,
       setError: this.setError,
       clearError: this.clearError,
       setGoal: this.setGoal,
       setUserGoals: this.setUserGoals,
+      addUserGoal: this.addUserGoal,
       deleteGoal: this.deleteGoal,
       updateGoal: this.updateGoal,
       setAdvice: this.setAdvice,
+      setUpvotes: this.setUpvotes,
+      addUpvote: this.addUpvote,
+      deleteUpvote: this.deleteUpvote,
       setWinWall: this.setWinWall,
       cleargoal: this.cleargoal,
-      addAdvice: this.addAdvice
+      addAdvice: this.addAdvice,
+      deleteAdvice: this.deleteAdvice
     }
     return (
       <NSpiredContext.Provider value={value}>

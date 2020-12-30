@@ -33,6 +33,11 @@
     margin: 0 auto;
 }
 
+.clone-goal-title {
+    letter-spacing: 2px;
+    margin-top: 0;
+}
+
 .timeframe-buttons {
     display: flex;
     margin: 20px auto;

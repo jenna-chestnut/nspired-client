@@ -61,9 +61,7 @@ const GoalsService = {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
-      body: JSON.stringify({
-        newGoal
-      }),
+      body: JSON.stringify(newGoal),
     })
       .then(res =>
         (!res.ok)
@@ -80,9 +78,7 @@ const GoalsService = {
           'content-type': 'application/json',
           'authorization': `bearer ${TokenService.getAuthToken()}`
       },
-      body: JSON.stringify({
-          goalData
-      }),
+      body: JSON.stringify(goalData),
     })
       .then(res =>
         (!res.ok)

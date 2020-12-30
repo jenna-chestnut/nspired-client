@@ -1,9 +1,13 @@
 import './InspoQuote.css';
 import React from 'react';
+import NSpiredContext from '../../contexts/NSpiredContext';
 
 class InspoQuote extends React.Component {
+  static contextType = NSpiredContext;
 
-    // call function to grab random quote on each render
+  componentDidMount() {
+    
+  }
 
   render() {
       return (

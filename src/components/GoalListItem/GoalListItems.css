@@ -1,5 +1,6 @@
 .win-item {
     display: flex;
+    flex-direction: column;
     margin: 15px auto;
     border: 2px #d6d6d6 solid;
     width: 100%;
@@ -8,10 +9,12 @@
 
 .win-item span {
     margin: auto 10px;
+    text-align: center;
 }
 
 .win-item h3 {
     margin: 20px 10px;
+    text-align: center;
 }
 
 .item-and-options {
@@ -21,6 +24,11 @@
 
 .share-win .win-item {
     width: 99%;
+}
+
+.share-title {
+    font-size: 25px;
+    letter-spacing: 3px;
 }
 
 .item-and-options button {
@@ -53,5 +61,13 @@
 }
 
 @media all and (min-width:600px) {
-    
+    .win-item {
+        flex-direction: row;
+    }
+    .win-item span {
+        margin: auto 20px;
+    }
+    .win-item h3 {
+        margin: 20px 20px;
+    }
 }

@@ -27,7 +27,7 @@ class GoalPublicWin extends React.Component {
         name={goal_name}
         creator={creator}
         id={id}
-        win_wall={true}
+        winWall={true}
         />
 
         </div>

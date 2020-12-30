@@ -1,7 +1,7 @@
 import config from '../config'
 import TokenService from './token-service'
 
-const AdviceService = {
+const InspoService = {
   // *** ADVICE ***
 
   // GET advice for specific goal
@@ -51,4 +51,4 @@ const AdviceService = {
     },
 }
 
-export default AdviceService
+export default InspoService

@@ -28,7 +28,7 @@ export default class Dashboard extends Component {
 					<GoalListItem 
 					toDo={true}
 					name={item.goal_name} 
-					expires={item.expiration}
+					expiration={item.expiration}
 					id={item.goal_id}
 					/>
 				</GoalPrivateToDo>
@@ -66,10 +66,14 @@ export default class Dashboard extends Component {
 					<h2>My Goals</h2>
 					<WinList>{this.renderToDos()}</WinList>
 				</div>
+
 				<div className="item">
+				<div className='ng-button-div'><button className='new-goal' onClick={() => this.props.history.push('/create-goal')}>
+				New Goal </button></div>
 					<h2>Wins</h2>
 					<WinList>{this.renderWins()}</WinList>
 				</div>
+
 			</div>
 		);
 	}

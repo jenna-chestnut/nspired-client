@@ -6,7 +6,12 @@ const UpvotesService = {
 
   // GET upvotes
   getUpvotes(goalId) {
-    return fetch(`${config.API_ENDPOINT}/upvotes/${goalId}`)
+    return fetch(`${config.API_ENDPOINT}/upvotes/${goalId}`, {
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    })
       .then(res =>
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
@@ -16,13 +21,13 @@ const UpvotesService = {
 
   // POST user upvote 
   postUpvote(goalId) {
-    return fetch(`${config.API_ENDPOINT}/goals/${goalId}`, {
+    return fetch(`${config.API_ENDPOINT}/upvotes/${goalId}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
-        body: {},
+        body: JSON.stringify({}),
     })
       .then(res =>
           (!res.ok)
@@ -33,17 +38,16 @@ const UpvotesService = {
 
   // DELETE user upvote 
   deleteUpvote(goalId) {
-    return fetch(`${config.API_ENDPOINT}/goals/${goalId}`, {
+    return fetch(`${config.API_ENDPOINT}/upvotes/${goalId}`, {
       method: 'DELETE',
       headers: {
-        'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res =>
           (!res.ok)
             ? res.json().then(e => Promise.reject(e))
-            : res.json()
+            : res
         )
   }
 }
