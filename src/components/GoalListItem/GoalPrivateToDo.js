@@ -3,8 +3,11 @@ import React from 'react';
 import WinWin from '../../components/WinandDeleteButtons/WinWin';
 import DeleteWin from '../../components/WinandDeleteButtons/DeleteWin';
 import { withRouter } from 'react-router-dom';
+import NSpiredContext from '../../contexts/NSpiredContext';
 
 class GoalPrivateToDo extends React.Component {
+  static contextType = NSpiredContext;
+
   static defaultProps = {
     history: {
       push: () => {},

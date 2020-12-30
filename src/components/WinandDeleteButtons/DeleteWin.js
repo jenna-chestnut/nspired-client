@@ -14,8 +14,8 @@ class DeleteWin extends React.Component {
 
     if (window.confirm('Are you sure you want to delete this goal? This action cannot be undone.')) {
     GoalsService.deleteUserGoal(id)
-    .then(this.props.onGoalDeleted(id))
     .then(this.context.deleteGoal(id))
+    .then(this.props.onGoalDeleted)
     .catch(this.context.setError);
     }
   }
