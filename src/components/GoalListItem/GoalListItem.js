@@ -11,14 +11,24 @@ class GoalListItem extends React.Component {
   }
 
   renderTimeLeft() {
-    const { expires } = this.props;
-    const timeLeft = getTimeLeft(expires);
+    const { expiration } = this.props;
+    const timeLeft = getTimeLeft(expiration);
     return timeLeft;
   }
 
+  renderGoalTitle(link) {
+    const { name, toShare = false } = this.props;
+    let title = <Link to={link}>{name}</Link>
+
+    if(toShare) {
+      title = <div className="share-title">{name}</div>;
+    }
+    return title;
+  }
+
   render() {
-    const { id, name, creator, 
-      toDo = false, winWall = false, toShare = false 
+    const { id, creator, 
+      toDo = false, winWall = false, toShare = false, is_creator = false 
     } = this.props;
     
     const link = winWall 
@@ -29,16 +39,15 @@ class GoalListItem extends React.Component {
 
       return (
         <li className="win-item">
-        <h3><Link to={link}>{name}</Link></h3>
-        <span>{toDo
-        ?
-        this.renderTimeLeft()
+        <h3>{this.renderGoalTitle(link)}</h3>
+        <span>{
+        toDo ? this.renderTimeLeft()
         :
-        toShare
-        ?
-        <i>If you want to go quickly go alone. If you want to go far go together.</i>
+        !toShare ? creator
         :
-        creator
+        is_creator ? <i>If you want to go quickly go alone. If you want to go far go together.</i>
+        :
+        <>Created by: {creator}</>
         }</span>
         </li>
       )

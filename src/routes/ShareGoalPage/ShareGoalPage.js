@@ -3,6 +3,7 @@ import GoalListItem from '../../components/GoalListItem/GoalListItem';
 import ShareGoalForm from '../../components/ShareGoalForm/ShareGoalForm';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import GoalsService from '../../services/goals-api-service';
+import UpvotesService from '../../services/upvotes-api-service';
 import './ShareGoalPage.css';
 
 export default class ShareGoalPage extends Component {
@@ -22,8 +23,10 @@ export default class ShareGoalPage extends Component {
     .catch(this.context.setError);
   }
 
-  handleShareSuccess = () => {
-    this.props.history.push(`/win-wall`)
+  handleShareSuccess = (id) => {
+    console.log(id)
+    UpvotesService.postUpvote(id)
+    .then(() => this.props.history.push(`/win-wall`));
   }
 
   render() {
@@ -33,7 +36,6 @@ export default class ShareGoalPage extends Component {
 		
 		const goal = userGoals.find(goal => goal.goal_id === parseInt(goalId)) 
       || {}
- 
 
     return (
         <div className='share-win-background'>
@@ -42,10 +44,9 @@ export default class ShareGoalPage extends Component {
         <section className="share-win">
         <h2>Wanna share your win?</h2>
 
-          <GoalListItem name={goal.goal_name} toShare={true}/>
+          <GoalListItem name={goal.goal_name} is_creator={goal.is_creator} toShare={true}/>
           <ShareGoalForm onShareSuccess={this.handleShareSuccess} 
           match={this.props.match}/>
-
         </section>
         </div>
     )

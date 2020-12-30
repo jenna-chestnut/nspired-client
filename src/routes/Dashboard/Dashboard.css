@@ -24,6 +24,15 @@
     padding: 0;
 }
 
+.ng-button-div {
+    display: flex;
+    justify-content: center;
+}
+
+.new-goal {
+    width: 60%;
+}
+
 #delete-win:hover {
     background-color: transparent;
     border-radius: 35px;

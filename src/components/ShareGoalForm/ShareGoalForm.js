@@ -1,4 +1,5 @@
 import React from 'react';
+import './ShareGoalForm.css';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import AdviceService from '../../services/advice-api-service';
 
@@ -13,7 +14,7 @@ class ShareGoalForm extends React.Component {
 
 		AdviceService.postAdvice(goalId, advice)
 		.then(this.context.addAdvice)
-		.then(this.props.onShareSuccess())
+		.then(this.props.onShareSuccess(parseInt(goalId)))
 		.catch(this.context.setError)
 	}
 

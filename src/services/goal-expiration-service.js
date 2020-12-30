@@ -34,3 +34,8 @@ export default function getTimeLeft(expiration) {
               {timeLeft}
            </span>
   }
+
+export function getFutureExpire(val) {
+  let expires = new Date(new Date().setDate(new Date().getDate() + parseInt(val)));
+  return expires.toISOString();
+}

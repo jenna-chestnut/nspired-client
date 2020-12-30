@@ -22,6 +22,14 @@ img {
   width: 100%;
 }
 
+main .error {
+  padding: 40px;
+}
+
+main .error a {
+  display: block;
+}
+
 .inspiration {
   text-align: left;
   padding-left: 3%;

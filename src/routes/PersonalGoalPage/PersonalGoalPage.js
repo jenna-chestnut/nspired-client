@@ -5,7 +5,9 @@ import './PersonalGoalPage.css';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import GoalsService from '../../services/goals-api-service';
 import AdviceService from '../../services/advice-api-service';
+import { Link } from 'react-router-dom';
 import getTimeLeft from '../../services/goal-expiration-service';
+import AdviceColumn from '../../components/AdviceColumn/AdviceColumn';
 
 export default class PersonalGoalPage extends Component {
   static contextType = NSpiredContext;
@@ -27,11 +29,15 @@ export default class PersonalGoalPage extends Component {
 
 		GoalsService.getUserGoals()
 		.then(this.context.setUserGoals)
+    .catch(this.context.setError);
+    
+    GoalsService.getWinWall()
+		.then(this.context.setWinWall)
 		.catch(this.context.setError);
 
 		AdviceService.getGoalAdvice(id)
-			.then(this.context.setAdvice)
-			.catch(this.context.setError)
+		.then(this.context.setAdvice)
+    .catch(this.context.setError)
   }
 
   handleGoalCompletedSuccess = (id) => {
@@ -42,69 +48,81 @@ export default class PersonalGoalPage extends Component {
     this.props.history.push(`/dashboard`);
     this.context.deleteGoal(id);
   }
+
+  renderGoalStatus(goal_id, completed, is_creator, expiration) {
+    const is_public = this.context.winWall.find(goal => goal.id === goal_id);
+
+    let status = !completed
+    ?
+    getTimeLeft(expiration)
+    :
+    !is_creator || is_public
+    ?
+    <p>You did it! &#127881; <Link to={`/win-wall/${goal_id}`}>View Win here.</Link></p> 
+    :
+    <p>You did it! &#127881; <Link to={`/share-win/${goal_id}`}>Wanna share your win?</Link></p> 
+
+    return status;
+  }
   
-  renderAdvice() {
-
-		let { advice } = this.context;
-
-    if (advice.length !== 0) {
-    advice = advice.map(item => {
-			return (
-				<div key={item.id}>
-					<p>
-						{item.advice_text}
-					</p>
-					<p className="signature">- {item.user_name}</p>
-				</div>
-			)
-		})
-
-		return <div className="advice-column">
-              <h3>
-                <i>Advice Column</i>
-              </h3>
-              {advice}
-            </div>
-    }
-	}
-
-  render() {
+  renderGoalContent() {
     const { goalId } = this.props.match.params;
+		const { userGoals = [], winWall = [] } = this.context;
+    const goal = userGoals.find(goal => goal.goal_id === parseInt(goalId));
+    const win = winWall.find(win => win.id === parseInt(goalId));
+    let content;
 
-		const { userGoals = [] } = this.context;
-		
-		const goal = userGoals.find(goal => goal.goal_id === parseInt(goalId)) 
-      || this.props.goal;
+    if(goal) {
+      const { goal_name, expiration, is_creator, completed,
+        date_created, goal_id, personal_note} = goal;
+        content = <section className="view-goal">
 
-    return (
-        <section className="view-goal">
+        <h2 className='goal-title'>{goal_name}</h2>
 
-            <h2 className='goal-title'>{goal.goal_name}</h2>
+        { goal.completed ? ''
+          :
+          <div className='group'>
+            <WinWin id={goal_id} 
+            onGoalCompleted={this.handleGoalCompletedSuccess}/>
+            <DeleteWin id={goal_id}
+            onGoalDeleted={this.handleDeleteSuccess}/>
+          </div> 
+        }
 
-            { goal.completed ? ''
-              :
-              <div className='group'>
-                <WinWin id={goal.goal_id} 
-                onGoalCompleted={this.handleGoalCompletedSuccess}/>
-                <DeleteWin id={goal.goal_id}
-                onGoalDeleted={this.handleDeleteSuccess}/>
-              </div> 
-            }
-
-          <div className="win-item">
-            <h3>{goal.completed ? <p>You did it! &#127881;</p> 
-            : getTimeLeft(goal.expiration)}</h3>
-            <span>Created: {new Date(goal.date_created).toLocaleString()}</span>
-          </div>
+        <div className="win-item">
+          <h3>{this.renderGoalStatus(goal_id, completed, is_creator, expiration)}</h3>
+          <span>Created: {new Date(date_created).toLocaleString()}</span>
+        </div>
 
         <div className="reminder">
-        <h4>Remember why you took this on...</h4>
-        <p>{goal.personal_note}</p>
-      </div>
-
-      {this.renderAdvice()}
-
+          <h4>Remember why you took this on...</h4>
+          <p>{personal_note}</p>
+        </div>
+        <AdviceColumn id={goal_id}/>
       </section>
+    } else if (win) {
+      const { goal_name, id } = win;
+      content = <div className='view-goal error'>
+        <h1>{goal_name}</h1>
+				<p> You don't have this goal - yet! </p>
+        <Link to={`/win-wall/${id}`}>View on the win wall</Link>
+				<Link to='/'>Go Home</Link>
+			  </div>
+    }
+    else {
+      content = <div className='view-goal error'>
+				<p> Sorry, this goal doesn't exist! </p>
+				<Link to='/'>Go Home</Link>
+			  </div>
+    }
+    return content;
+  }
+
+  render() {
+    const goalContent = this.renderGoalContent();
+
+    return (
+        goalContent
     )
   }
 }

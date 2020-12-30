@@ -1,0 +1,16 @@
+.inspiration {
+    position: absolute;
+    top: 120px;
+    text-align: left;
+    padding-left: 30px;
+    font-style: italic;
+    color: grey;
+}
+
+@media all and (min-width: 600px) {
+    .inspiration {
+        position: absolute;
+        top: 110px;
+        padding-left: 3%;
+    }
+}
