@@ -48,7 +48,7 @@ class App extends React.Component {
           <PrivateRoute path='/dashboard' component={Dashboard} />
 
           <PrivateRoute path='/share-win/:goalId' component={ShareGoalPage} />
-          <PrivateRoute path='/create-goal' component={CreateGoalPage} />
+          <Route path='/create-goal' component={CreateGoalPage} />
           <PrivateRoute path='/clone-goal/:goalId' component={CreateGoalPage} />
           <PrivateRoute path='/view-goal/:goalId' component={PersonalGoalPage} />
 

@@ -2,8 +2,10 @@ import './RegistrationForm.css';
 import React from 'react';
 import AuthService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
+import NSpiredContext from '../../contexts/NSpiredContext';
 
 class RegistrationForm extends React.Component {
+	static contextType = NSpiredContext;
 
 	static defaultProps = {
 		onRegistrationSuccess: () => {}
@@ -27,12 +29,16 @@ class RegistrationForm extends React.Component {
 			password.value = '';
 			confirm_password.value = '';
 			TokenService.saveAuthToken(res.authToken);
-			this.props.onRegistrationSuccess();
+		})
+		.then(this.props.onRegistrationSuccess)
+		.catch(e => { 
+			this.setState({ error : e.error })
 		})
 	  }
 
 	render() {
 		const { error } = this.state;
+		const { goal } = this.context;
 
 		return (
 			<>
@@ -43,7 +49,11 @@ class RegistrationForm extends React.Component {
           				{error && <p>{error}</p>}
         			</div>
 
-						<legend>Ready for some wins of your own?</legend>
+						<legend> 
+							{ goal 
+							? 	'Ready to make this win yours?'
+							: 'Ready for some wins of your own?' }
+						</legend>
 
 						<div className="form-group">
 							<label htmlFor="full_name">Name</label>

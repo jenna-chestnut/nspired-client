@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 
-export const nullGoal = {
-  goal_name: null,
-  user_id: null,
-}
-
 const NSpiredContext = React.createContext({
-  goal: nullGoal,
+  goal: null,
   userNote: '',
   userGoals: [],
   advice: [],
@@ -37,7 +32,7 @@ export default NSpiredContext
 
 export class GoalProvider extends Component {
   state = {
-    goal: nullGoal,
+    goal: null,
     userGoals: [],
     upVotes: [],
     advice: [],
@@ -125,7 +120,7 @@ export class GoalProvider extends Component {
   }
 
   cleargoal = () => {
-    this.setGoal(nullGoal)
+    this.setGoal(null)
     this.setAdvice([])
   }
 

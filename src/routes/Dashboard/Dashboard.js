@@ -6,6 +6,7 @@ import GoalPrivateToDo from '../../components/GoalListItem/GoalPrivateToDo';
 import GoalsService from '../../services/goals-api-service';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import { Link } from 'react-router-dom';
+import DeleteAccount from '../../components/DeleteAccountButton/DeleteUser';
 
 export default class Dashboard extends Component {
 	static contextType = NSpiredContext;
@@ -16,6 +17,10 @@ export default class Dashboard extends Component {
 		GoalsService.getUserGoals()
 			.then(this.context.setUserGoals)
 			.catch(this.context.setError);
+	}
+
+	onDelete = () => {
+		this.props.history.push('/');
 	}
 
 	renderToDos() {
@@ -68,8 +73,12 @@ export default class Dashboard extends Component {
 				</div>
 
 				<div className="item">
-				<div className='ng-button-div'><button className='new-goal' onClick={() => this.props.history.push('/create-goal')}>
+
+				<div className='da-button-div'><button className='new-goal' onClick={() => this.props.history.push('/create-goal')}>
 				New Goal </button></div>
+
+				<div className='da-button-div'><DeleteAccount onDelete={this.onDelete}/></div>
+
 					<h2>Wins</h2>
 					<WinList>{this.renderWins()}</WinList>
 				</div>
