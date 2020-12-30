@@ -2,6 +2,7 @@ import React from 'react';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import { getFutureExpire } from '../../services/goal-expiration-service';
 import GoalsService from '../../services/goals-api-service';
+import TokenService from '../../services/token-service';
 import './CreateGoalForm.css';
 
 class CreateGoalForm extends React.Component {
@@ -18,6 +19,13 @@ class CreateGoalForm extends React.Component {
 
 	handleGoalSubmit = ev => {
 		ev.preventDefault();
+
+		if(!TokenService.hasAuthToken()) {
+			this.context.setGoal(this.state);
+			this.props.onDemoGoal();
+		}
+
+		else {
 		const { clone = false } = this.props;
 		const { goal_name, expiration, personal_note } = this.state;
 
@@ -45,6 +53,7 @@ class CreateGoalForm extends React.Component {
 		.then(this.props.onCreateSuccess())
 		.catch(this.context.setError)
 
+			}
 		}
 	}
 
@@ -56,6 +65,10 @@ class CreateGoalForm extends React.Component {
 		this.setState({
 			[key] : e.value
 		})
+
+		if(!TokenService.hasAuthToken()) {
+			this.context.setGoal(this.state)
+		}
 	}
 
 	renderTitle() {

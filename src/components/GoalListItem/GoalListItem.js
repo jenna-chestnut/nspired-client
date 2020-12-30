@@ -43,11 +43,11 @@ class GoalListItem extends React.Component {
         <span>{
         toDo ? this.renderTimeLeft()
         :
-        !toShare ? creator
+        !toShare ? creator || <i>User deleted</i>
         :
         is_creator ? <i>If you want to go quickly go alone. If you want to go far go together.</i>
         :
-        <>Created by: {creator}</>
+        <>Created by: {creator || <i>User deleted</i>}</>
         }</span>
         </li>
       )

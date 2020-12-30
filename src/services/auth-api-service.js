@@ -1,4 +1,5 @@
 import config from '../config'
+import TokenService from './token-service'
 
 const AuthService = {
 
@@ -30,6 +31,21 @@ const AuthService = {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
+      )},
+
+    // DELETE user account
+    deleteAccount() {
+    return fetch(`${config.API_ENDPOINT}/auth/delete`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res
       )},
 }
 

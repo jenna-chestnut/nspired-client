@@ -24,12 +24,12 @@
     padding: 0;
 }
 
-.ng-button-div {
+.da-button-div {
     display: flex;
     justify-content: center;
 }
 
-.new-goal {
+.da-button-div button {
     width: 60%;
 }
 

@@ -24,7 +24,6 @@ export default class ShareGoalPage extends Component {
   }
 
   handleShareSuccess = (id) => {
-    console.log(id)
     UpvotesService.postUpvote(id)
     .then(() => this.props.history.push(`/win-wall`));
   }

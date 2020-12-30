@@ -24,6 +24,10 @@ export default class CreateGoalPage extends Component {
     this.props.history.push(`/dashboard`)
   }
 
+  handleDemoGoal = () => {
+    this.props.history.push(`/sign-up`)
+  } 
+
   render() {
     const { goalId } = this.props.match.params;
     
@@ -32,7 +36,9 @@ export default class CreateGoalPage extends Component {
 		const clone = winWall.find(goal => goal.id === parseInt(goalId));
 
     return (
-          <CreateGoalForm clone={clone} onCreateSuccess={this.handleCreateSuccess} 
+          <CreateGoalForm clone={clone} 
+          onCreateSuccess={this.handleCreateSuccess}
+          onDemoGoal={this.handleDemoGoal} 
           match={this.props.match}/>
     )
   }
