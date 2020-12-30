@@ -44,9 +44,8 @@ export default class PersonalGoalPage extends Component {
     this.props.history.push(`/share-win/${id}`)
   }
 
-  handleDeleteSuccess = (id) => {
+  handleDeleteSuccess = () => {
     this.props.history.push(`/dashboard`);
-    this.context.deleteGoal(id);
   }
 
   renderGoalStatus(goal_id, completed, is_creator, expiration) {

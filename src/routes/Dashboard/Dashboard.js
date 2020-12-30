@@ -40,13 +40,19 @@ export default class Dashboard extends Component {
 			);
 		});
 
+		if (userGoals.length === 0) {
+			userGoals = <div className='no-g'><p>Uh oh! You don't have any goals in progress.</p>
+			<Link to='/win-wall'>Need some inspiration?</Link>
+			<Link to='/create-goal'>Create a goal from scratch!</Link></div>
+		}
+
 		return userGoals;
 	}
 
 	renderWins() {
 		let { userGoals } = this.context;
 
-		const dashboardWins = userGoals.filter(toDo => toDo.completed === true)
+		let dashboardWins = userGoals.filter(toDo => toDo.completed === true)
 		.map((item, idx) => {
 			return (
 				<div className="dash-win" key={idx + 11}>
@@ -55,7 +61,12 @@ export default class Dashboard extends Component {
 					</Link>
 				</div>
 			);
-		}); 
+		});
+
+		if (dashboardWins.length === 0) {
+			dashboardWins = <div className='no-g'><p>No goals completed... yet!</p>
+			<Link to='/win-wall'>Need some inspiration?</Link></div>
+		}
 
 		return dashboardWins;
 	}
@@ -77,9 +88,11 @@ export default class Dashboard extends Component {
 				<div className='da-button-div'><button className='new-goal' onClick={() => this.props.history.push('/create-goal')}>
 				New Goal </button></div>
 
-				<div className='da-button-div'><DeleteAccount onDelete={this.onDelete}/></div>
+				<div className='da-button-div'>
+					<DeleteAccount onDelete={this.onDelete}/>
+				</div>
 
-					<h2>Wins</h2>
+				<h2>Wins</h2>
 					<WinList>{this.renderWins()}</WinList>
 				</div>
 

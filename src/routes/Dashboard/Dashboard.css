@@ -33,6 +33,15 @@
     width: 60%;
 }
 
+.no-g {
+    text-align: center;
+}
+
+.no-g a {
+    display: block;
+    margin-top: 15px;
+}
+
 #delete-win:hover {
     background-color: transparent;
     border-radius: 35px;

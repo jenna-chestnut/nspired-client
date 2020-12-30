@@ -3,8 +3,11 @@ import React from 'react';
 import homeLogo from '../../images/home+house+icon.png';
 import TokenService from '../../services/token-service';
 import { Link } from 'react-router-dom';
+import NSpiredContext from '../../contexts/NSpiredContext';
 
 class Header extends React.Component {
+  static contextType = NSpiredContext;
+  
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
     this.setState({})
@@ -45,7 +48,6 @@ class Header extends React.Component {
     const links = TokenService.hasAuthToken()
       ? this.renderLogoutLink()
       : this.renderLoginLink();
-
       return (
         <header className="h-group">
         <h1 className="item">nSpired</h1>
