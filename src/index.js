@@ -4,15 +4,15 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
-import { GoalProvider } from './contexts/NSpiredContext';
+import { NSpiredProvider } from './contexts/NSpiredContext';
 
 ReactDOM.render(
   <BrowserRouter>
-  <GoalProvider>
+  <NSpiredProvider>
     
     <App />
     
-  </GoalProvider>
+  </NSpiredProvider>
   </BrowserRouter>
   ,
   document.getElementById('root')

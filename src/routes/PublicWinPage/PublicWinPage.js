@@ -13,7 +13,8 @@ export default class PublicWinPage extends Component {
 	static contextType = NSpiredContext;
 
 	static defaultProps = {
-		win: {}
+		win: {},
+		match: { params: { goalId: 0 } }
 	}
 
 	componentDidMount() {

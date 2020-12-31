@@ -15,6 +15,10 @@ class AdviceColumn extends React.Component {
     .catch(this.context.setError)
     }
   }
+
+  componentWillUnmount() {
+    this.context.clearAdvice();
+  }
   
   render() {
       let { advice = [] } = this.context;

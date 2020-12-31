@@ -10,7 +10,7 @@ const NSpiredContext = React.createContext({
   inspo: [],
   error: null,
   setError: () => {},
-  clearError: () => { },
+  clearError: () => {},
   setGoal: () => {},
   setUserGoals: () => {},
   addUserGoal: () => {},
@@ -20,6 +20,7 @@ const NSpiredContext = React.createContext({
   setPersonalNotes: () => {},
   setAdvice: () => {},
   addAdvice: () => {},
+  clearAdvice: () => {},
   deleteAdvice: () => {},
   setUpvotes: () => {},
   addUpvote: () => {},
@@ -30,7 +31,7 @@ const NSpiredContext = React.createContext({
 
 export default NSpiredContext
 
-export class GoalProvider extends Component {
+export class NSpiredProvider extends Component {
   state = {
     goal: null,
     userGoals: [],
@@ -41,9 +42,8 @@ export class GoalProvider extends Component {
     error: null
   };
 
-  setError = error => {
-    console.error(error)
-    this.setState({ error })
+  setError = e => {
+    this.setState({ error : e.message })
   }
 
   clearError = () => {
@@ -119,9 +119,12 @@ export class GoalProvider extends Component {
     })
   }
 
-  cleargoal = () => {
-    this.setGoal(null)
+  clearAdvice = () => {
     this.setAdvice([])
+  }
+
+  clearGoal = () => {
+    this.setGoal(null)
   }
 
   addAdvice = advice => {
@@ -159,11 +162,12 @@ export class GoalProvider extends Component {
       deleteGoal: this.deleteGoal,
       updateGoal: this.updateGoal,
       setAdvice: this.setAdvice,
+      clearAdvice: this.clearAdvice,
       setUpvotes: this.setUpvotes,
       addUpvote: this.addUpvote,
       deleteUpvote: this.deleteUpvote,
       setWinWall: this.setWinWall,
-      cleargoal: this.cleargoal,
+      clearGoal: this.clearGoal,
       addAdvice: this.addAdvice,
       deleteAdvice: this.deleteAdvice,
       setInspo: this.setInspo

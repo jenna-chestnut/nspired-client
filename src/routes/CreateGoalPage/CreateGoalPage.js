@@ -10,6 +10,7 @@ export default class CreateGoalPage extends Component {
     history: {
       push: () => {},
     },
+    match: { params: { goalId: 0 } }
   }
 
   componentDidMount() {
@@ -29,7 +30,7 @@ export default class CreateGoalPage extends Component {
   } 
 
   render() {
-    const { goalId } = this.props.match.params;
+    const goalId = this.props.match.params.goalId;
     
     const { winWall = [] } = this.context;
 		

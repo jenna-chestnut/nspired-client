@@ -29,7 +29,7 @@ class Header extends React.Component {
     )
   }
 
-  renderLoginLink() {
+  renderLoginLink = () => {
     return (
       <>
         <Link
@@ -37,7 +37,7 @@ class Header extends React.Component {
           Log in
         </Link>
         <Link
-          to='/sign-up'>
+          to='/sign-up' onClick={() => this.context.clearGoal()}>
           Sign-Up
         </Link>
       </>

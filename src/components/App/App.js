@@ -16,6 +16,7 @@ import ShareGoalPage from '../../routes/ShareGoalPage/ShareGoalPage';
 import PersonalGoalPage from '../../routes/PersonalGoalPage/PersonalGoalPage';
 import PublicWinPage from '../../routes/PublicWinPage/PublicWinPage';
 import CreateGoalPage from '../../routes/CreateGoalPage/CreateGoalPage';
+import ErrorBanner from '../ErrorBanner/ErrorBanner';
 
 class App extends React.Component {
   state = { hasError: false }
@@ -36,7 +37,7 @@ class App extends React.Component {
           <InspoQuote />
 
           <main> 
-
+          <ErrorBanner />
           <Switch>
           <Route exact path='/' component={LandingPage} />
 
