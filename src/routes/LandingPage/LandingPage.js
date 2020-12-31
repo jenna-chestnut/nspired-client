@@ -4,6 +4,7 @@ import GoalPublicWin from '../../components/GoalListItem/GoalPublicWin';
 import WinList from '../../components/WinList/WinList';
 import GoalsApiService from '../../services/goals-api-service';
 import NSpiredContext from '../../contexts/NSpiredContext';
+import TokenService from '../../services/token-service';
 
 class LandingPage extends React.Component {
 	static contextType = NSpiredContext;
@@ -27,6 +28,12 @@ class LandingPage extends React.Component {
 			);
 	}
 
+	renderButtonText = () => {
+		return TokenService.hasAuthToken() 
+		? 'Create a goal'
+		: 'Try it out';
+	}
+
 	render() {
 		const { history } = this.props;
 		
@@ -37,7 +44,9 @@ class LandingPage extends React.Component {
 						<p>&#128197; Create goals.</p>
 						<p>Meet them. &#128221;</p>
 						<p>&#127881; Share your wins.</p>
-						<button onClick={() => history.push('/create-goal')}>Try it out</button>
+						<button onClick={() => history.push('/create-goal')}>
+							{this.renderButtonText()}
+							</button>
 					</div>
 
 					<div className="item">

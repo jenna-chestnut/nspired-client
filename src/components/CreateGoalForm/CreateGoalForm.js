@@ -13,7 +13,8 @@ class CreateGoalForm extends React.Component {
 			this.state = {
 			goal_name: '',
 			expiration: null,
-			personal_note: null
+			personal_note: null,
+			touched: { goal_name: null, expiration: null }
 		}
 	}
 
@@ -39,7 +40,6 @@ class CreateGoalForm extends React.Component {
 		.then(this.context.addUserGoal)
 		.then(this.props.onCreateSuccess())
 		.catch(this.context.setError)
-
 		} 
 		else {
 		const newGoalData = {
@@ -52,7 +52,6 @@ class CreateGoalForm extends React.Component {
 		.then(this.context.addUserGoal)
 		.then(this.props.onCreateSuccess())
 		.catch(this.context.setError)
-
 			}
 		}
 	}
@@ -61,14 +60,34 @@ class CreateGoalForm extends React.Component {
 		if (key === 'expiration') {
 			e.value = getFutureExpire(e.value);
 		}
-		
-		this.setState({
-			[key] : e.value
-		})
 
-		if(!TokenService.hasAuthToken()) {
-			this.context.setGoal(this.state)
+		this.setState({
+			[key] : e.value,
+			touched: {
+				...this.state.touched,
+				[key] : true
+			}
+		})
+	}
+
+	validate(key) {
+		const {expiration, goal_name, touched} = this.state;
+		let validation;
+
+		if (!expiration) {
+			if ( key === 'expiration' )
+			validation = 'Expiration is required';
 		}
+		if (goal_name === '' && touched.goal_name) {
+			if ( key === 'goalName' )
+			validation = 'Goal name is required';
+		}
+		if (goal_name === '' || !expiration) {
+			if ( key === 'toSubmit')
+			validation = true;
+		}
+
+		return validation;
 	}
 
 	renderTitle() {
@@ -82,7 +101,9 @@ class CreateGoalForm extends React.Component {
 		<legend>Create A Goal</legend>
 		<label htmlFor="goal_name">What would you like to achieve?</label>
 		<input type="text" id="goal_name" 
-		onChange={e => this.handleStateChange(e.target, 'goal_name')}/>
+		onChange={e => this.handleStateChange(e.target, 'goal_name')}
+		value={this.state.goal_name}/>
+		<div className='helper-text'>{this.validate('goalName')}</div>
 		</>
 		return title;
 	}
@@ -99,7 +120,7 @@ class CreateGoalForm extends React.Component {
 		{time:'1 month', val: 30}, {time:'3 months', val: 90}];
 
 		let radioButtons = times.map((time, idx) => {
-			return <div key={idx}><input type="radio" name="expiration" value={time.val} id={idx} onChange={e => this.handleStateChange(e.target, 'expiration')}/>
+			return <div key={idx}><input type="radio" name="expiration" value={time.val} id={idx} onChange={e => this.handleStateChange(e.target, 'expiration')} required/>
 			<label htmlFor={idx}>{time.time}</label></div>
 		})
 
@@ -108,21 +129,29 @@ class CreateGoalForm extends React.Component {
   
 
 	render() {
-
+		
 		return (
 			<form className="create-goal" onSubmit={this.handleGoalSubmit}>
 				<fieldset>
 					{this.renderTitle()}
+
 					<label htmlFor="expiration">
 						When would you like to achieve this goal?
 					</label>
+
 					<div className="timeframe-buttons">
 						{this.renderRadioButtons()}
 					</div>
+					<div className='helper-text'>{this.validate('expiration')}</div>
+
 					<label htmlFor="personal_note">Why would you like to {this.renderGoalName()}?</label>
+
 					<textarea id="personal_note" name="personal_note"
-					onChange={e => this.handleStateChange(e.target, 'personal_note')}></textarea>
-					<button type="submit">Create Goal</button>
+					onChange={e => this.handleStateChange(e.target, 'personal_note')} 
+					value={this.state.personal_note}></textarea>
+
+					<button disabled={this.validate('toSubmit')} type="submit">Create Goal</button>
+
 				</fieldset>
 			</form>
 		);

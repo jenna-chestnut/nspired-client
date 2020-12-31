@@ -16,11 +16,12 @@ export default class PersonalGoalPage extends Component {
 		goal: {
 			completed: false,
 			date_created: "2020-11-29T19:17:58.436Z",
-			goal_name: "Become a dev",
+			goal_name: "Goal name",
       id: 1,
-      personal_note: 'CAUSE I WANNA!',
+      personal_note: 'Personal note',
       expiration: "2021-01-04T19:17:58.436Z"
-		}
+    },
+    match: { params: { goalId: 0 } }
   }
   
   componentDidMount() {
@@ -32,12 +33,21 @@ export default class PersonalGoalPage extends Component {
     .catch(this.context.setError);
     
     GoalsService.getWinWall()
-		.then(this.context.setWinWall)
+    .then((winWall) => {
+      this.context.setWinWall(winWall);
+      return winWall;
+    })
+    .then( async (winWall) => {
+      const win = await winWall.find(win => win.id === parseInt(id));
+		  if (win) this.getAdvice(id)
+    })
 		.catch(this.context.setError);
+  }
 
-		AdviceService.getGoalAdvice(id)
-		.then(this.context.setAdvice)
-    .catch(this.context.setError)
+  getAdvice(id) {
+    AdviceService.getGoalAdvice(id)
+		  .then(this.context.setAdvice)
+      .catch(this.context.setError)
   }
 
   handleGoalCompletedSuccess = (id) => {
@@ -46,6 +56,10 @@ export default class PersonalGoalPage extends Component {
 
   handleDeleteSuccess = () => {
     this.props.history.push(`/dashboard`);
+  }
+
+  findWin = () => {
+    
   }
 
   renderGoalStatus(goal_id, completed, is_creator, expiration) {
@@ -97,7 +111,9 @@ export default class PersonalGoalPage extends Component {
           <h4>Remember why you took this on...</h4>
           <p>{personal_note}</p>
         </div>
-        <AdviceColumn id={goal_id}/>
+
+        {win ? <AdviceColumn id={goal_id}/> : ''}
+        
       </section>
     } else if (win) {
       const { goal_name, id } = win;

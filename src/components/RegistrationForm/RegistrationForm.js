@@ -16,6 +16,12 @@ class RegistrationForm extends React.Component {
 	handleSubmit = ev => {
 		ev.preventDefault()
 		const { full_name, user_name, password, confirm_password } = ev.target;
+
+		if (password.value !== confirm_password.value) {
+			this.setState({ error: 'Password fields must match'})
+			return;
+		}
+
 		const userData = { 
 			full_name: full_name.value, 
 			user_name: user_name.value, 
@@ -57,22 +63,22 @@ class RegistrationForm extends React.Component {
 
 						<div className="form-group">
 							<label htmlFor="full_name">Name</label>
-							<input type="text" name="full_name" />
+							<input type="text" name="full_name" required/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="user_name">Username</label>
-							<input type="text" name="user_name" />
+							<input type="text" name="user_name" required/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="password">Password </label>
-							<input type="password" name="password" />
+							<input type="password" name="password" required/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="confirm_password">Confirm Password</label>
-							<input type="password" name="confirm_password" />
+							<input type="password" name="confirm_password" required/>
 						</div>
 
 						<button type="submit">Create Account</button>

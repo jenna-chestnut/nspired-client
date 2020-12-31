@@ -19,6 +19,11 @@ export default class Dashboard extends Component {
 			.catch(this.context.setError);
 	}
 
+	componentWillUnmount() {
+		this.context.setUserGoals([]);
+	}
+
+
 	onDelete = () => {
 		this.props.history.push('/');
 	}

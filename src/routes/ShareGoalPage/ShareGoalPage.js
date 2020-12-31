@@ -13,6 +13,7 @@ export default class ShareGoalPage extends Component {
     history: {
       push: () => {},
     },
+    match: { params: { goalId: 0 } }
   }
 
   componentDidMount() {
