@@ -1,3 +1,24 @@
-.upvoted {
-    border: 5px solid lime;
+.upvotes {
+    width: 100px;
+    font-size: 25px;
+    margin: auto;
+}
+
+.upvotes button {
+    background-color: transparent;
+    color: gold;
+    padding: 0;
+    font-size: 30px;
+}
+
+.upvotes button:hover {
+    box-shadow: 0 5px 15px yellow;
+    background-color: transparent;
+}
+
+@media all and (min-width: 600px) {
+    .win-item-pubwin .upvotes {
+        vertical-align: middle;
+        margin: auto;
+    }
 }

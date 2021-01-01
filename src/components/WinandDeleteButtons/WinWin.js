@@ -1,6 +1,7 @@
 import React from 'react';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import GoalsService from '../../services/goals-api-service';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class WinWin extends React.Component {
   static contextType = NSpiredContext;
@@ -23,7 +24,9 @@ class WinWin extends React.Component {
   render() {
       return (
         <button onClick={(e) => this.handleComplete(e, this.props.id)}
-        id="win-win">&#128505;</button>
+        id="win-win">
+          <FontAwesomeIcon className='d-green' icon='check'/>
+          </button>
       );
     }
 }

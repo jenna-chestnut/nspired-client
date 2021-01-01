@@ -3,6 +3,7 @@ import React from 'react';
 import AuthService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
 import NSpiredContext from '../../contexts/NSpiredContext';
+import { Link } from 'react-router-dom';
 
 class RegistrationForm extends React.Component {
 	static contextType = NSpiredContext;
@@ -86,7 +87,7 @@ class RegistrationForm extends React.Component {
 
 					<p>
 						Already have an account?
-						<a href="/sign-up">Click here to log in.</a>
+						<Link to="/login">Click here to log in.</Link>
 					</p>
 				</form>
 			</>

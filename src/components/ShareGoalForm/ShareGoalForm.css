@@ -1,6 +1,8 @@
 
 .share-win textarea {
     display: block;
+    padding: 5px;
+    border-radius: 5px;
     width: 90%;
     margin: auto;
 }

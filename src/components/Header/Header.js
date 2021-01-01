@@ -1,9 +1,9 @@
 import './Header.css';
 import React from 'react';
-import homeLogo from '../../images/home+house+icon.png';
 import TokenService from '../../services/token-service';
 import { Link } from 'react-router-dom';
 import NSpiredContext from '../../contexts/NSpiredContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Header extends React.Component {
   static contextType = NSpiredContext;
@@ -16,10 +16,6 @@ class Header extends React.Component {
   renderLogoutLink() {
     return (
       <>
-        <Link 
-        to="/dashboard">
-          Dashboard
-        </Link>
         <Link
           onClick={this.handleLogoutClick}
           to='/'>
@@ -50,11 +46,15 @@ class Header extends React.Component {
       : this.renderLoginLink();
       return (
         <header className="h-group">
-        <h1 className="item">nSpired</h1>
+        <h1 className="item">
+          <Link to='/'>nSpired</Link>{' '}
+        <FontAwesomeIcon icon={['far', 'lightbulb']} className='d-orange bulb'/></h1>
         <nav>
         <Link to="/win-wall">Win Wall</Link>
         { links }
-        <Link to="/"><img src={homeLogo} alt='Home page'/></Link>
+        <Link to="/dashboard">
+          <FontAwesomeIcon icon='home' className='d-green home'/>
+        </Link>
         </nav>
         </header>
       );

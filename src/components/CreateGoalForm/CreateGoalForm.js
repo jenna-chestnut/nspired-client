@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import { getFutureExpire } from '../../services/goal-expiration-service';
@@ -94,11 +95,11 @@ class CreateGoalForm extends React.Component {
 		const { clone = false } = this.props;
 		const title = clone 
 		? <>
-		<legend>Clone A Goal</legend>
+		<legend>Clone</legend>
 		<h2 className='clone-goal-title'>{clone.goal_name}</h2> </>
 		: 
 		<>
-		<legend>Create A Goal</legend>
+		<legend>New Goal</legend>
 		<label htmlFor="goal_name">What would you like to achieve?</label>
 		<input type="text" id="goal_name" 
 		onChange={e => this.handleStateChange(e.target, 'goal_name')}
@@ -131,6 +132,9 @@ class CreateGoalForm extends React.Component {
 	render() {
 		
 		return (
+			<>
+			<div class="tab-holder">
+		<span class='form-tab'>&#9660;</span>
 			<form className="create-goal" onSubmit={this.handleGoalSubmit}>
 				<fieldset>
 					{this.renderTitle()}
@@ -150,10 +154,13 @@ class CreateGoalForm extends React.Component {
 					onChange={e => this.handleStateChange(e.target, 'personal_note')} 
 					value={this.state.personal_note}></textarea>
 
-					<button disabled={this.validate('toSubmit')} type="submit">Create Goal</button>
+					<button disabled={this.validate('toSubmit')} type="submit">Set Goal
+					{' '}<FontAwesomeIcon icon='tasks'/></button>
 
 				</fieldset>
 			</form>
+			</div>
+			</>
 		);
 	}
 }

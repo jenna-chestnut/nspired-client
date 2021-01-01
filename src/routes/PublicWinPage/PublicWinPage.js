@@ -62,24 +62,6 @@ export default class PublicWinPage extends Component {
 		return button;
 	}
 
-	renderAdvice() {
-
-		let { advice } = this.context;
-
-		advice = advice.map(item => {
-			return (
-				<div key={item.id}>
-					<p>
-						{item.advice_text}
-					</p>
-					<p className="signature">- {item.user_name}</p>
-				</div>
-			)
-		}) || []
-
-		return advice;
-	}
-
 	renderWinContent() {
 		const { winId } = this.props.match.params;
 		const { winWall = [] } = this.context;
@@ -91,12 +73,15 @@ export default class PublicWinPage extends Component {
 			content = 
 			<section className="view-pub-win">
 			<h2 className="goal-title">{goal_name}</h2>
-			<h3>This goal has nSpired {clones} people!</h3>
-			<div className="win-item-pubwin">
+			<h3>This goal has nSpired {clones === '1' ? '1 person!' : `${clones} people!`}</h3>
+			<span>Total completed goals: {completed}</span>
+			<span className="win-item-pubwin">
+				<div className="item-double pwc-green">
 				{this.renderButton()}
-				<span>Total complete: {completed}</span>
+				</div>
+				<div className="item group pwc-grey">
 				<UpVote upvote_count={upvote_count} upvotes={this.context.upVotes} id={winId} />
-			</div>
+			</div></span>
 				<AdviceColumn id={winId}/>
 		</section>		
 		} else {

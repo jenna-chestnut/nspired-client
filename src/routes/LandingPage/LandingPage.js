@@ -49,7 +49,7 @@ class LandingPage extends React.Component {
 							</button>
 					</div>
 
-					<div className="item">
+					<div className="item winwall">
 						<WinList>
 							<p>Top Wins</p>
 							{this.renderWinList()}

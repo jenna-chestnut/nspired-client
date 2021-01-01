@@ -11,9 +11,24 @@
     margin: 10px;
 }
 
+.winwall .win-list p {
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
 .landing-page button {
     margin: 10px;
     font-size: 18px;
+}
+
+.landing-page .winwall {
+    background-color: #d0cde2;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.winwall ul {
+    margin: 20px auto;
 }
 
 .nspired-intro {
@@ -22,15 +37,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 45px;
+    margin-bottom: 10px;
 }
 
 @media all and (min-width:600px) {
     .landing-page {
         flex-direction: row;
         padding: 25px;
-    }
-    .nspired-intro {
-        margin-bottom: 10px;
     }
 }

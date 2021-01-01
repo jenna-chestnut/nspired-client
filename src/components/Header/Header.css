@@ -1,6 +1,4 @@
-header {
-    margin-top: 20px;
-}
+
 
 header img {
     vertical-align: middle;
@@ -9,6 +7,7 @@ header img {
 }
 
 h1 {
+    padding-top: 10px;
     font-size: 40px;
     letter-spacing: 2px;
     margin-top: 45px;
@@ -18,8 +17,23 @@ h1 {
 nav {
     margin: auto;
     position: absolute;
+    right: 0px;
     text-align: right;
     padding-top: 10px;
+}
+
+.bulb:hover {
+    color: gold;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px yellow;
+}
+
+.home {
+    font-size: 50px;
+}
+
+.home:hover {
+    color: #5f8a64;
 }
 
 .h-group {
@@ -44,6 +58,7 @@ nav a {
     h1 {
         font-size: 45px;
         margin-left: 20px;
+        margin-top: 25px;
     }
     nav {
         position: relative;

@@ -2,6 +2,7 @@ import React from 'react';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import './Upvote.css';
 import UpvotesService from '../../services/upvotes-api-service';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class UpVote extends React.Component {
   static contextType = NSpiredContext;
@@ -35,13 +36,15 @@ class UpVote extends React.Component {
     const { upVotes = [] } = this.context; 
     const { id } = this.props;
 
-    let className = 'not-upvoted'; 
+    let icon = 'far'; 
 
     if (upVotes.userUpvoted) {
-      className = 'upvoted';
+      icon = 'fas';
     }
 
-    return <button className={className} onClick={(e) => this.handleUpvote(e, id)}>&#10506;</button>;
+    return <button onClick={(e) => this.handleUpvote(e, id)}>
+            <FontAwesomeIcon icon={[icon, 'star']} />
+          </button>;
   }
 
   render() {
@@ -49,8 +52,9 @@ class UpVote extends React.Component {
 
       return (
         <div className="upvotes">
-        <span>{upVotes.upvotes ? upVotes.upvotes.length : 0}</span>
+        <span>{upVotes.upvotes ? upVotes.upvotes.length : 0}{' '}
         {this.renderButton()}
+        </span>
         </div>
       );
     }
