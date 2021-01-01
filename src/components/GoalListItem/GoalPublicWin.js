@@ -2,6 +2,7 @@ import './GoalListItems.css';
 import './GoalListItems.css';
 import React from 'react';
 import GoalListItem from './GoalListItem';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class GoalPublicWin extends React.Component {
   static defaultProps = {
@@ -20,7 +21,7 @@ class GoalPublicWin extends React.Component {
 
         <div className='upvotes'>
           <span>{upvote_count}</span>
-          <span>⇧</span>
+          <span><FontAwesomeIcon className='lp-star d-grey' icon={['far', 'star']}/></span>
           </div>
 
         <GoalListItem 

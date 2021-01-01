@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 import GoalListItem from '../../components/GoalListItem/GoalListItem';
 import ShareGoalForm from '../../components/ShareGoalForm/ShareGoalForm';
@@ -29,6 +30,12 @@ export default class ShareGoalPage extends Component {
     .then(() => this.props.history.push(`/win-wall`));
   }
 
+  createConfetti() {
+    let confetti = Array(15);
+    confetti = confetti.fill(<div className='confetti'></div>)
+    return confetti;
+  }
+
   render() {
     const { goalId } = this.props.match.params;
     
@@ -38,8 +45,10 @@ export default class ShareGoalPage extends Component {
       || {}
 
     return (
+      <>
+      <div className='container'>{this.createConfetti()}
         <div className='share-win-background'>
-            <h1 className='you-did-it'>YOU DID IT!</h1> 
+            <h1 className='you-did-it'>YOU DID IT!{' '}<FontAwesomeIcon className='v-green' icon={['far','check-circle']}></FontAwesomeIcon></h1> 
 
         <section className="share-win">
         <h2>Wanna share your win?</h2>
@@ -49,6 +58,8 @@ export default class ShareGoalPage extends Component {
           match={this.props.match}/>
         </section>
         </div>
+        </div>
+        </>
     )
   }
 }

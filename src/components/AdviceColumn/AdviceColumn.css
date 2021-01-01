@@ -1,16 +1,49 @@
-.inspiration {
-    position: absolute;
-    top: 120px;
+
+.advice-column {
+    border-radius: 10px;
+    width: 90%;
+    margin: 0 3% 40px 3%;
     text-align: left;
-    padding-left: 30px;
-    font-style: italic;
-    color: grey;
+    padding: 10px;
+    background-color: #F4F2F8;
+}
+
+.advice-column h3 {
+    font-size: 25px;
+    margin: 10px;
+}
+
+.advice-column p {
+    padding: 10px 0px 0px 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 0;
+    margin-right: 10px;
+}
+
+.delete-advice {
+    padding: 5px;
+    margin-top: 5px;
+    margin-left: 10px;
+    background-color: slategray;
+    position: absolute;
+}
+
+.delete-advice:hover {
+    background-color: rgb(142, 161, 180);
 }
 
 @media all and (min-width: 600px) {
-    .inspiration {
-        position: absolute;
-        top: 110px;
-        padding-left: 3%;
+    .advice-column {
+        width: 60%;
+        padding: 35px;
+        margin: 0 auto 40px auto;
+    }
+    .signature {
+        margin-right: 30px;
     }
 }

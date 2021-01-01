@@ -24,7 +24,7 @@ class AdviceColumn extends React.Component {
       let { advice = [] } = this.context;
   
       if (advice.length !== 0) {
-      advice = advice.map(item => {
+      const adviceList = advice.map(item => {
         return (
           <div key={item.id}>
             <p>
@@ -36,16 +36,13 @@ class AdviceColumn extends React.Component {
           </div>
         )
       })
+      advice = <div className="advice-column">
+      <h3><i>Advice Column</i></h3>
+            {adviceList}
+              </div>
     }
   
-      return (
-              <div className="advice-column">
-                <h3>
-                  <i>Advice Column</i>
-                </h3>
-                {advice}
-              </div>
-        )
+      return advice
     }
 }
 

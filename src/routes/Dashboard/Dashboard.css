@@ -6,6 +6,7 @@
 .dashboard h2 {
     font-size: 30px;
     text-align: center;
+    padding-top: 25px;
 }
 
 .dashboard .win-list {
@@ -18,6 +19,16 @@
 
 .dash-win {
     text-align: center;
+    border-radius: 5px;
+    background-color:#a0c0ab;
+    min-height: 30px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.dash-win h3 {
+    margin: 15px;
 }
 
 .dashboard #delete-win, .dashboard #win-win {
@@ -26,11 +37,18 @@
 
 .da-button-div {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .da-button-div button {
-    width: 60%;
+    width: 90%;
+    margin: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.da-button-div button:hover {
+    background-color: #DCA37F;
 }
 
 .no-g {
@@ -54,6 +72,9 @@
 }
 
 @media all and (min-width: 900px) {
+    .da-button-div button {
+        width: 70%;
+    }
     .dashboard {
         flex-direction: row;
         padding: 0 40px 0 0;

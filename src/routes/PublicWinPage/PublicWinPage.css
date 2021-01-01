@@ -2,67 +2,60 @@
     text-align: center;
 }
 
-.view-pub-win .upvotes {
-    width: 100px;
-    font-size: 25px;
-    margin: 0 auto;
-}
-
-.advice-column {
-    width: 95%;
-    margin: 0 20px;
-    text-align: left;
-    padding-bottom: 35px;
-    padding-right: 10px;
-}
-
-.advice-column h3 {
-    font-size: 25px;
-}
-
-.advice-column p {
-    margin-bottom: 0;
-}
-
-.signature {
-    text-align: right;
-    margin-top: 0;
-    margin-right: 30px;
-}
-
 #clone-goal {
+    background-color: slategrey;
     font-size: 25px;
-    border: 2px grey solid;
+    border: none;
     margin: auto 10px;
 }
 
 #clone-goal:hover {
-    background-color: yellow;
+    background-color: gold;
+}  
+
+h4 {
+   margin: 0px;
 }
 
 .win-item-pubwin {
     display: flex;
     width: 95%;
     margin: auto;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     flex-direction: column;
 }
 
+.win-item-pubwin span {
+    height: 30px;
+    margin: auto;
+    margin-top: 0px;
+}
+
+.pwc-green {
+    background-color: #cbe6d4;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.pwc-grey {
+    background-color: #F4F2F8;
+    border-radius: 10px;
+}
+
+.win-item-pubwin .item {
+    padding: 20px;
+}
+
+.win-item-pubwin .item h4 {
+    margin: 5px;
+}
+
 @media all and (min-width: 600px) {
-    .advice-column {
-        width: 60%;
-        margin: auto;
-        padding-left: 20px;
-    }
     .win-item-pubwin {
         display: flex;
         flex-direction: row;
-        margin: 45px auto;
+        margin: 35px auto;
         width: 60%;
         justify-content: space-evenly;
-    }
-    .win-item-pubwin .upvotes {
-        vertical-align: middle;
-        margin: auto 10px;
     }
 }

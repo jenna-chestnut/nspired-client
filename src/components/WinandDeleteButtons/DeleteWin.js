@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import GoalsService from '../../services/goals-api-service';
@@ -24,7 +25,7 @@ class DeleteWin extends React.Component {
       return (
         <button onClick={(e) => this.handleDelete(e, this.props.id)} 
         id="delete-win">
-          &#128711;
+          <FontAwesomeIcon className='d-red' icon='times'/>
         </button>
       );
     }
