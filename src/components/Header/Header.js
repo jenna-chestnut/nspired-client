@@ -4,13 +4,13 @@ import TokenService from '../../services/token-service';
 import { Link } from 'react-router-dom';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import InspoQuote from '../InspoQuote/InspoQuote';
 
 class Header extends React.Component {
   static contextType = NSpiredContext;
   
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
-    this.setState({})
   }
 
   renderLogoutLink() {
@@ -47,15 +47,16 @@ class Header extends React.Component {
       return (
         <header className="h-group">
         <h1 className="item">
-          <Link to='/'>nSpired</Link>{' '}
-        <FontAwesomeIcon icon={['far', 'lightbulb']} className='d-orange bulb'/></h1>
+          <Link to='/'>nSpired{' '}
+        <FontAwesomeIcon icon={['far', 'lightbulb']} className='d-orange bulb'/></Link></h1>
         <nav>
         <Link to="/win-wall">Win Wall</Link>
         { links }
         <Link to="/dashboard">
-          <FontAwesomeIcon icon='home' className='d-green home'/>
+          <FontAwesomeIcon icon='clipboard-list' className='d-green home'/>
         </Link>
         </nav>
+        <InspoQuote />
         </header>
       );
     }

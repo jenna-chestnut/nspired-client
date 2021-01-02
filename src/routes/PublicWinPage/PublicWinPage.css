@@ -31,8 +31,9 @@ h4 {
     margin-top: 0px;
 }
 
-.pwc-green {
-    background-color: #cbe6d4;
+.pwc-status {
+    text-align: center;
+    background-color: transparent;
     padding: 20px;
     border-radius: 5px;
 }
@@ -57,5 +58,8 @@ h4 {
         margin: 35px auto;
         width: 60%;
         justify-content: space-evenly;
+    }
+    .pwc-status {
+        text-align: left;
     }
 }

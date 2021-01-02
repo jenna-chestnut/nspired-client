@@ -8,25 +8,33 @@ import reportWebVitals from './reportWebVitals';
 import { NSpiredProvider } from './contexts/NSpiredContext';
 
 import { faLightbulb, faStar as farStar,
-  faCheckCircle } from '@fortawesome/free-regular-svg-icons'
+  faCheckCircle,
+faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 
 import {
-  faHome,
+  faClipboardList,
   faStar as fasStar,
   faCheck,
   faTimes,
-  faTasks
+  faTasks,
+  faHourglassHalf,
+  faCommentSlash,
+  faEdit
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faLightbulb, // header
-  faHome, // home icon
+  faClipboardList, // dashboard icon
   fasStar, // solid star for upvotes
   farStar, // star outline for upvotes
   faCheck,
   faTimes,
   faTasks,
-  faCheckCircle
+  faCheckCircle,
+  faHourglassHalf,
+  faTimesCircle,
+  faCommentSlash,
+  faEdit
 )
 
 ReactDOM.render(

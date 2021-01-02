@@ -1,9 +1,9 @@
 .inspiration {
     position: absolute;
-    top: 120px;
+    top: 125px;
     text-align: left;
-    padding-left: 30px;
-    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
     font-style: italic;
     color: grey;
 }
@@ -11,7 +11,7 @@
 @media all and (min-width: 600px) {
     .inspiration {
         position: absolute;
-        top: 110px;
+        top: 100px;
         padding-left: 3%;
     }
 }

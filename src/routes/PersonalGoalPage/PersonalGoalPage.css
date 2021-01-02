@@ -5,6 +5,7 @@
 .view-goal .win-item {
     border: none;
     width: 95%;
+    padding-bottom: 20px;
 }
 
 .view-goal h3 {
@@ -42,5 +43,6 @@
 @media all and (min-width:600px) {
     .view-goal .win-item {
         width: 60%;
+        padding-bottom: 0px;
     }
 }

@@ -2,7 +2,6 @@ import './App.css';
 import React from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import InspoQuote from '../InspoQuote/InspoQuote';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from '../../Utils/PrivateRoute'
 import PublicOnlyRoute from '../../Utils/PublicOnlyRoute'
@@ -33,8 +32,6 @@ class App extends React.Component {
           {this.state.hasError && <p className='error-banner'>Sorry, there was an error. Please refresh the page and try again</p>}
 
           <Header />
-          
-          <InspoQuote />
 
           <main> 
           <ErrorBanner />

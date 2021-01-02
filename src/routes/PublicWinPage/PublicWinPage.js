@@ -6,8 +6,8 @@ import TokenService from '../../services/token-service';
 import { Link } from 'react-router-dom';
 import './PublicWinPage.css';
 import UpVote from '../../components/UpvoteButton/Upvote';
-import UpvotesService from '../../services/upvotes-api-service';
 import AdviceColumn from '../../components/AdviceColumn/AdviceColumn';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class PublicWinPage extends Component {
 	static contextType = NSpiredContext;
@@ -29,10 +29,6 @@ export default class PublicWinPage extends Component {
 			.then(this.context.setAdvice)
 			.catch(this.context.setError)
 
-		UpvotesService.getUpvotes(id)
-    		.then(this.context.setUpvotes)
-    		.catch(this.context.setError)
-
 		if (TokenService.hasAuthToken()) {
 		GoalsService.getUserGoals()
 			.then(this.context.setUserGoals)
@@ -52,10 +48,16 @@ export default class PublicWinPage extends Component {
 		if (goal) {
 			goal.completed
 			?
-			button = (<div><h4><i>Goal completed.</i></h4>
-				<Link to={`/view-goal/${winId}`}>Click here to view.</Link></div>)
+			button = (<div><h4>
+				<i>Goal completed.</i>{' '}
+			<FontAwesomeIcon className='v-green' icon={['far','check-circle']}/>
+			</h4>
+				<Link to={`/view-goal/${winId}`}>Click here to view.</Link>
+				</div>)
 			:
-			button = (<div><h4><i>Goal in progress.</i></h4>
+			button = (<div><h4><i>Goal in progress.</i>{' '}
+			<FontAwesomeIcon className='d-orange' icon='hourglass-half'/>
+			</h4>
 				<Link to={`/view-goal/${winId}`}>Click here to view.</Link></div>)
 		}
 
@@ -64,25 +66,31 @@ export default class PublicWinPage extends Component {
 
 	renderWinContent() {
 		const { winId } = this.props.match.params;
-		const { winWall = [] } = this.context;
+		const { winWall, userGoals = [] } = this.context;
 		const win = winWall.find(win => win.id === parseInt(winId))
 		let content;
 
 		if (win) {
-			const { goal_name, clones, completed, upvote_count } = win;
+			const { goal_name, clones, completed } = win;
+			const goal = userGoals.find(goal => goal.goal_id === parseInt(winId));
+			let userCompleted = false;
+			if (goal && goal.completed) userCompleted = true;
+
 			content = 
 			<section className="view-pub-win">
 			<h2 className="goal-title">{goal_name}</h2>
 			<h3>This goal has nSpired {clones === '1' ? '1 person!' : `${clones} people!`}</h3>
 			<span>Total completed goals: {completed}</span>
 			<span className="win-item-pubwin">
-				<div className="item-double pwc-green">
+				<div className="item-double pwc-status">
 				{this.renderButton()}
 				</div>
 				<div className="item group pwc-grey">
-				<UpVote upvote_count={upvote_count} upvotes={this.context.upVotes} id={winId} />
-			</div></span>
-				<AdviceColumn id={winId}/>
+				<div className='upvotes'>
+				<UpVote id={winId} />
+				</div>
+				</div></span>
+				<AdviceColumn id={winId} completed={userCompleted}/>
 		</section>		
 		} else {
 			content = <div className='view-pub-win error'>

@@ -2,9 +2,12 @@ import './GoalListItems.css';
 import './GoalListItems.css';
 import React from 'react';
 import GoalListItem from './GoalListItem';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import UpVote from '../UpvoteButton/Upvote';
+import NSpiredContext from '../../contexts/NSpiredContext';
 
 class GoalPublicWin extends React.Component {
+  static contextType = NSpiredContext;
+
   static defaultProps = {
     win: {
     id: null,
@@ -13,15 +16,19 @@ class GoalPublicWin extends React.Component {
     creator: 'DrHorrible'
     }
   }
+
+  componentDidMount() {
+  }
+
   render() {
-    const { upvote_count, goal_name, creator, id } = this.props.win;
+    const { goal_name, creator, id } = this.props.win;
 
       return (
         <div className="item-and-options">
 
         <div className='upvotes'>
-          <span>{upvote_count}</span>
-          <span><FontAwesomeIcon className='lp-star d-grey' icon={['far', 'star']}/></span>
+          <UpVote id={id} 
+          winWall={true}/>
           </div>
 
         <GoalListItem 

@@ -42,8 +42,9 @@ export class NSpiredProvider extends Component {
     error: null
   };
 
-  setError = e => {
-    this.setState({ error : e.message })
+  setError = async e => {
+    const error = await e.error.message;
+    return await this.setState({ error : error })
   }
 
   clearError = () => {
@@ -95,30 +96,6 @@ export class NSpiredProvider extends Component {
     this.setState({ winWall })
   }
 
-  setUpvotes = upVotes => {
-    this.setState({ upVotes })
-  }
-
-  addUpvote = upVote => {
-    this.setState({ 
-      upVotes: {
-        upvotes : [
-          ...this.state.upVotes.upvotes,
-          upVote
-        ],
-        userUpvoted: true
-      } })
-  }
-
-  deleteUpvote = () => {
-    this.setState({
-      upVotes: {
-        upvotes: this.state.upVotes.upvotes,
-        userUpvoted: false
-      }
-    })
-  }
-
   clearAdvice = () => {
     this.setAdvice([])
   }
@@ -163,9 +140,6 @@ export class NSpiredProvider extends Component {
       updateGoal: this.updateGoal,
       setAdvice: this.setAdvice,
       clearAdvice: this.clearAdvice,
-      setUpvotes: this.setUpvotes,
-      addUpvote: this.addUpvote,
-      deleteUpvote: this.deleteUpvote,
       setWinWall: this.setWinWall,
       clearGoal: this.clearGoal,
       addAdvice: this.addAdvice,

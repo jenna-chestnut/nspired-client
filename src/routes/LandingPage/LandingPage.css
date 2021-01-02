@@ -11,14 +11,25 @@
     margin: 10px;
 }
 
-.winwall .win-list p {
-    font-size: 30px;
-    letter-spacing: 2px;
-}
-
 .landing-page button {
     margin: 10px;
     font-size: 18px;
+}
+
+.landing-page .upvotes {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.landing-page .upvotes button {
+   margin: 10px;
+}
+
+.winwall .win-list p {
+    font-size: 30px;
+    letter-spacing: 2px;
 }
 
 .landing-page .winwall {
@@ -44,5 +55,11 @@
     .landing-page {
         flex-direction: row;
         padding: 25px;
+    }
+    .winwall .upvotes {
+        flex-direction: row;
+    }
+    .winwall .upvotes span {
+        align-self: center;
     }
 }

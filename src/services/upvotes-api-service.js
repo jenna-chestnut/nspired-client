@@ -9,7 +9,7 @@ const UpvotesService = {
     return fetch(`${config.API_ENDPOINT}/upvotes/${goalId}`, {
       headers: {
         'content-type': 'application/json',
-        'authorization': `bearer ${TokenService.getAuthToken()}`
+        'authorization': `bearer ${TokenService.getAuthToken() || ''}`
       }
     })
       .then(res =>

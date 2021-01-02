@@ -58,10 +58,6 @@ export default class PersonalGoalPage extends Component {
     this.props.history.push(`/dashboard`);
   }
 
-  findWin = () => {
-    
-  }
-
   renderGoalStatus(goal_id, completed, is_creator, expiration) {
     const is_public = this.context.winWall.find(goal => goal.id === goal_id);
 
@@ -112,7 +108,7 @@ export default class PersonalGoalPage extends Component {
           <p>{personal_note}</p>
         </div>
 
-        {win ? <AdviceColumn id={goal_id}/> : ''}
+        {win ? <AdviceColumn id={goal_id} completed={completed}/> : ''}
         
       </section>
     } else if (win) {

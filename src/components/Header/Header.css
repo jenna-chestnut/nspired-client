@@ -1,4 +1,6 @@
-
+header {
+    position: relative;
+}
 
 header img {
     vertical-align: middle;
@@ -39,8 +41,8 @@ nav {
 .h-group {
     display: flex;
     justify-content: space-between;
-    padding: 0 3%;
     flex-direction: column;
+    margin-bottom: 10px;
 }
 
 nav a {
@@ -54,6 +56,7 @@ nav a {
 @media all and (min-width: 600px) {
     .h-group {
         flex-direction: row;
+        padding: 0 3%;
     }
     h1 {
         font-size: 45px;

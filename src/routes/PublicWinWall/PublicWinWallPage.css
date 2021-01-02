@@ -3,12 +3,30 @@
 }
 
 .win-wall {
-    width: 90%;
+    width: 100%;
     margin: 20px auto;
+}
+
+.win-wall .upvotes {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.win-wall button {
+    margin: 15px 5px;
 }
 
 @media all and (min-width:600px) {
     .win-wall {
-        width: 70%;
+        width: 90%;
+        max-width: 800px;
+    }
+    .win-wall .upvotes {
+        flex-direction: row;
+    }
+    .win-wall .upvotes span {
+        align-self: center;
     }
 }

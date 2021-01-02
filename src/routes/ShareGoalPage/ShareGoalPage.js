@@ -31,8 +31,10 @@ export default class ShareGoalPage extends Component {
   }
 
   createConfetti() {
-    let confetti = Array(15);
-    confetti = confetti.fill(<div className='confetti'></div>)
+    let confetti = Array(15).fill('');
+    confetti = confetti.map((el, idx) => {
+      return <div key={idx} className='confetti'></div>
+    })
     return confetti;
   }
 
@@ -48,14 +50,14 @@ export default class ShareGoalPage extends Component {
       <>
       <div className='container'>{this.createConfetti()}
         <div className='share-win-background'>
-            <h1 className='you-did-it'>YOU DID IT!{' '}<FontAwesomeIcon className='v-green' icon={['far','check-circle']}></FontAwesomeIcon></h1> 
+            <h1 className='you-did-it'>YOU DID IT!{' '}<FontAwesomeIcon className='v-green' icon={['far','check-circle']}/></h1> 
 
         <section className="share-win">
         <h2>Wanna share your win?</h2>
 
           <GoalListItem name={goal.goal_name} is_creator={goal.is_creator} toShare={true}/>
           <ShareGoalForm onShareSuccess={this.handleShareSuccess} 
-          match={this.props.match}/>
+          id={goalId} completed={true}/>
         </section>
         </div>
         </div>

@@ -14,7 +14,7 @@ class CreateGoalForm extends React.Component {
 			this.state = {
 			goal_name: '',
 			expiration: null,
-			personal_note: null,
+			personal_note: '',
 			touched: { goal_name: null, expiration: null }
 		}
 	}
@@ -73,6 +73,7 @@ class CreateGoalForm extends React.Component {
 
 	validate(key) {
 		const {expiration, goal_name, touched} = this.state;
+		const { clone = false } = this.props;
 		let validation;
 
 		if (!expiration) {
@@ -84,7 +85,7 @@ class CreateGoalForm extends React.Component {
 			validation = 'Goal name is required';
 		}
 		if (goal_name === '' || !expiration) {
-			if ( key === 'toSubmit')
+			if ( key === 'toSubmit' && !clone)
 			validation = true;
 		}
 
@@ -133,8 +134,8 @@ class CreateGoalForm extends React.Component {
 		
 		return (
 			<>
-			<div class="tab-holder">
-		<span class='form-tab'>&#9660;</span>
+			<div className="tab-holder">
+		<span className='form-tab'>&#9660;</span>
 			<form className="create-goal" onSubmit={this.handleGoalSubmit}>
 				<fieldset>
 					{this.renderTitle()}

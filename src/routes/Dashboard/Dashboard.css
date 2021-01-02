@@ -10,6 +10,7 @@
 }
 
 .dashboard .win-list {
+    width: 90%;
     margin: 20px auto;
 }
 
@@ -31,8 +32,13 @@
     margin: 15px;
 }
 
+.dash-win-container {
+    height: 350px;
+    overflow: scroll;
+}
+
 .dashboard #delete-win, .dashboard #win-win {
-    padding: 0;
+    padding: 15px 0 0 0;
 }
 
 .da-button-div {
@@ -88,6 +94,12 @@
     }
 }
 
+@media all and (min-width: 600px) {
+    .dashboard #delete-win, .dashboard #win-win {
+        padding: 0pc;
+    }
+}
+
 @media all and (max-width: 600px) {
     .item-and-options {
         width: 95%;
@@ -97,7 +109,7 @@
     .dashboard #delete-win, .dashboard #win-win {
         position: absolute;
     }
-    #delete-win {
+    .dashboard #delete-win {
         margin-top: 70px;
     }
     .dashboard #win-win {

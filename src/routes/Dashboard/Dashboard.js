@@ -68,6 +68,8 @@ export default class Dashboard extends Component {
 			);
 		});
 
+		dashboardWins = <div className='dash-win-container'>{dashboardWins}</div>
+
 		if (dashboardWins.length === 0) {
 			dashboardWins = <div className='no-g'><p>No goals completed... yet!</p>
 			<Link to='/win-wall'>Need some inspiration?</Link></div>

@@ -6,6 +6,7 @@
     text-align: left;
     padding: 10px;
     background-color: #F4F2F8;
+    position: relative;
 }
 
 .advice-column h3 {
@@ -13,10 +14,31 @@
     margin: 10px;
 }
 
+.advice-item {
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color:#0e004b09;
+    position: relative;
+}
+
+.to-delete {
+    padding-bottom: 30px;
+}
+
 .advice-column p {
-    padding: 10px 0px 0px 10px;
-    margin-bottom: 0;
+    padding-left: 10px;
+    margin: 0;
     font-size: 16px;
+}
+
+.advice-column fieldset {
+    border: none;
+}
+
+.advice-column textarea {
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .signature {
@@ -26,15 +48,34 @@
 }
 
 .delete-advice {
-    padding: 5px;
-    margin-top: 5px;
-    margin-left: 10px;
-    background-color: slategray;
+    color: slategray;
+    padding: 2px;
+    font-size: 25px;
+    margin: 5px 0px 10px 10px;
+    background-color: transparent;
     position: absolute;
+    left: 5px;
+    bottom: 5px;
 }
 
 .delete-advice:hover {
+    color: white;
     background-color: rgb(142, 161, 180);
+}
+
+.add-advice {
+    color: #82c91e;
+    background-color: transparent;
+    font-size: 30px;
+    padding: 0px;
+    top: 15px;
+    right: 20px;
+    position: absolute;
+}
+
+.add-advice:hover {
+    color:  #82c91ead;
+    background-color: transparent;
 }
 
 @media all and (min-width: 600px) {
@@ -42,6 +83,10 @@
         width: 60%;
         padding: 35px;
         margin: 0 auto 40px auto;
+    }
+    .add-advice {
+        top: 30px;
+        right: 30px;
     }
     .signature {
         margin-right: 30px;

@@ -1,6 +1,6 @@
 .sign-up {
     margin: 40px auto;
-    width: 70%;
+    width: 90%;
 }
 
 .sign-up legend {
@@ -23,7 +23,7 @@
     text-align: right;
     width: 200px;
     height: 30px;
-    margin: auto 5px;
+    margin: auto 20px auto 5px;
 }
 
 .sign-up button {

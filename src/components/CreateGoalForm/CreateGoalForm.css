@@ -32,7 +32,7 @@
 
 .create-goal input {
     margin: 20px auto 0 auto;
-    width: 35%;
+    width: 65%;
     padding: 5px;
     border-radius: 5px;
 }
@@ -127,6 +127,9 @@ textarea {
 @media all and (min-width:600px) {
     .create-goal {
         width: 70%;
+    }
+    .create-goal input {
+        width: 35%;
     }
 }
 

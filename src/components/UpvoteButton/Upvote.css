@@ -12,8 +12,8 @@
 }
 
 .upvotes button:hover {
-    box-shadow: 0 5px 15px yellow;
     background-color: transparent;
+    color: yellow;
 }
 
 @media all and (min-width: 600px) {

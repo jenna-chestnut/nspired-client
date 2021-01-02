@@ -6,7 +6,7 @@ class Footer extends React.Component {
       return (
         <footer>
             <span>
-                Jenna Chestnut / <a href='https://linktr.ee/jenna.chestnut'>@Jennabot5000</a>
+                Jenna Chestnut / <a href='https://linktr.ee/jenna.chestnut' target='_blank' rel='noopener noreferrer'>@Jennabot5000</a>
             </span>
         </footer>
       );

@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Inter:wght@400&display=swap');
+
+header h1 {
+  font-family: 'DM Serif Text', Helvetica;
+  font-size: 50px;
+}
+
+body {
+  font-family: 'Inter', Helvetica;
+}
+
+main {
+  position: relative;
+}
+
 .group {
   display: flex;
 }

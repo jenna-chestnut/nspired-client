@@ -1,6 +1,7 @@
 import './ErrorBanner.css';
 import React from 'react';
 import NSpiredContext from '../../contexts/NSpiredContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ErrorBanner extends React.Component {
   static contextType = NSpiredContext;
@@ -11,9 +12,10 @@ class ErrorBanner extends React.Component {
 
     const errorBanner = error 
       ? <div className='error-banner'>
-        <p className="error-banner-txt">{error}
-        <button onClick={() => this.context.clearError()}>X</button>
-        </p>
+        <div className="error-banner-txt">
+          <span>{error}</span>
+        <button className='clear-error' onClick={() => this.context.clearError()}><FontAwesomeIcon icon={['far', 'times-circle']}/></button>
+        </div>
       </div> 
       :
         '';

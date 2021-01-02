@@ -9,12 +9,18 @@ class ShareGoalForm extends React.Component {
 	handleAdviceSubmit = ev => {
 		ev.preventDefault();
 		const { advice_text = null } = ev.target;
-		const { goalId } = this.props.match.params;
+		const { id } = this.props;
 		const advice = { advice_text: advice_text.value };
 
-		AdviceService.postAdvice(goalId, advice)
-		.then(this.context.addAdvice)
-		.then(this.props.onShareSuccess(parseInt(goalId)))
+		AdviceService.postAdvice(id, advice)
+		.then(() => AdviceService.getGoalAdvice(id))
+		.then(this.context.setAdvice)
+		.then(() => {
+			if (this.props.completed) {
+				this.props.onShareSuccess(parseInt(id))
+			}
+		})
+		.then(() => advice_text.value = '')
 		.catch(this.context.setError)
 	}
 
@@ -26,7 +32,12 @@ class ShareGoalForm extends React.Component {
 						Give some advice for others who want to accomplish this goal:
 					</label>
 					<textarea id="advice_text" name="advice_text"></textarea>
-					<button type="submit">Post to public wall</button>
+					<button type="submit">{
+						this.props.completed
+						?
+						'Post to public wall'
+						: 'Add Advice'}
+					</button>
 				</fieldset>
 			</form>
 		);
