@@ -2,6 +2,7 @@ import './LoginForm.css';
 import React from 'react';
 import AuthService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
 	static defaultProps = {
@@ -57,7 +58,7 @@ class LoginForm extends React.Component {
 				</fieldset>
 				<p>
 					Don't have an account yet?
-					<a href="/sign-up">Click here to sign up.</a>
+					<Link to="/sign-up">Click here to sign up.</Link>
 				</p>
 			</form>
 		);
