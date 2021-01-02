@@ -53,7 +53,8 @@ class Header extends React.Component {
         <Link to="/win-wall">Win Wall</Link>
         { links }
         <Link to="/dashboard">
-          <FontAwesomeIcon icon='clipboard-list' className='d-green home'/>
+          <FontAwesomeIcon icon='tasks' className='d-green home'
+          title='Dashboard'/>
         </Link>
         </nav>
         <InspoQuote />

@@ -8,8 +8,7 @@ class ErrorBanner extends React.Component {
 
   render() {
     const { error = null } = this.context;
-    console.log(error);
-
+    
     const errorBanner = error 
       ? <div className='error-banner'>
         <div className="error-banner-txt">
