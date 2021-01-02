@@ -3,6 +3,8 @@
 
 ---
 
+[View the live nSpired app here](https://nspired-app.vercel.app/)
+
 **nSpired** was created to offer a platform specifically to meeting goals independently, while connecting and sharing with others who want to achieve the same.  
 
 Science has proven time and time again that by surrounding yourself with others who have the same goals as you, you:  
