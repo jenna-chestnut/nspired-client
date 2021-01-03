@@ -12,7 +12,7 @@ class RegistrationForm extends React.Component {
 		onRegistrationSuccess: () => {}
 	  }
 	
-	  state = { error: null }
+	  state = { error: null, pwTouched: false, pwValidated: null }
 	
 	handleSubmit = ev => {
 		ev.preventDefault()
@@ -43,6 +43,23 @@ class RegistrationForm extends React.Component {
 		})
 	  }
 
+	  validatePw(val) {
+		const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&])[\S]+/;
+			if (val.length < 8) {
+			  return 'Password must be longer than 8 characters';
+			}
+			if (val.length > 72) {
+			  return 'Password must be less than 72 characters';
+			}
+			if (val.startsWith(' ') || val.endsWith(' ')) {
+			  return 'Password must not start or end with empty spaces';
+			}
+			if (!REGEX_UPPER_LOWER_NUMBER_SPECIAL.test(val)) {
+			  return 'Password must contain 1 upper case, lower case, number and special character';
+			}
+			return null;
+	  }
+
 	render() {
 		const { error } = this.state;
 		const { goal } = this.context;
@@ -64,23 +81,29 @@ class RegistrationForm extends React.Component {
 
 						<div className="form-group">
 							<label htmlFor="full_name">Name</label>
-							<input type="text" name="full_name" required/>
+							<input type="text" name="full_name" placeholder='Salem Chestnut' required/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="user_name">Username</label>
-							<input type="text" name="user_name" required/>
+							<input type="text" name="user_name" placeholder='Saybae0913' required/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="password">Password </label>
-							<input type="password" name="password" required/>
+							<input type="password" name="password" 
+							onChange={(e) => {
+								this.setState({pwTouched: true,
+								pwValidated: this.validatePw(e.target.value)});
+				
+								}} required/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="confirm_password">Confirm Password</label>
 							<input type="password" name="confirm_password" required/>
 						</div>
+						<div className='helper-text'>{this.state.pwTouched && this.state.pwValidated && 'Password must contain 1 upper case, lower case, number and special character'}</div>
 
 						<button type="submit">Create Account</button>
 					</fieldset>

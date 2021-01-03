@@ -26,6 +26,12 @@
     margin: auto 20px auto 5px;
 }
 
+.helper-text {
+    display: block;
+    padding: 0;
+    text-align: right;
+}
+
 .sign-up button {
     font-size: 18px;
     display: block;
