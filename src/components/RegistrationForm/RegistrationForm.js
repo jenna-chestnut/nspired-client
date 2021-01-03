@@ -95,7 +95,6 @@ class RegistrationForm extends React.Component {
 							onChange={(e) => {
 								this.setState({pwTouched: true,
 								pwValidated: this.validatePw(e.target.value)});
-				
 								}} required/>
 						</div>
 
