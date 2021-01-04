@@ -24,7 +24,7 @@ class DeleteAccount extends React.Component {
   render() {
       return (
         <button onClick={(e) => this.handleDelete(e)} 
-        id="delete-account">
+        className="delete-account">
           Delete Account
         </button>
       );

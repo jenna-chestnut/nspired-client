@@ -67,9 +67,9 @@ export default class PersonalGoalPage extends Component {
     :
     !is_creator || is_public
     ?
-    <p>You did it! &#127881; <Link to={`/win-wall/${goal_id}`}>View Win here.</Link></p> 
+    <>You did it! &#127881; <Link to={`/win-wall/${goal_id}`}>View Win here.</Link></> 
     :
-    <p>You did it! &#127881; <Link to={`/share-win/${goal_id}`}>Wanna share your win?</Link></p> 
+    <>You did it! &#127881; <Link to={`/share-win/${goal_id}`}>Wanna share your win?</Link></> 
 
     return status;
   }

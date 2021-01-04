@@ -81,7 +81,7 @@ export default class PublicWinPage extends Component {
 			<h2 className="goal-title">{goal_name}</h2>
 			<h3>This goal has nSpired {clones === '1' ? '1 person!' : `${clones} people!`}</h3>
 			<span>Total completed goals: {completed}</span>
-			<span className="win-item-pubwin">
+			<div className="win-item-pubwin">
 				<div className="item-double pwc-status">
 				{this.renderButton()}
 				</div>
@@ -89,7 +89,7 @@ export default class PublicWinPage extends Component {
 				<div className='upvotes'>
 				<UpVote id={winId} />
 				</div>
-				</div></span>
+				</div></div>
 				<AdviceColumn id={winId} completed={userCompleted}/>
 		</section>		
 		} else {

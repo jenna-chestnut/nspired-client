@@ -4,9 +4,9 @@ import React from 'react';
 class WinList extends React.Component {
   render() {
       return (
-        <ul className="win-list">
+        <div className="win-list">
             {this.props.children}
-        </ul>
+        </div>
       );
     }
 }

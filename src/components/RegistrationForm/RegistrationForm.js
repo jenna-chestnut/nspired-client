@@ -69,29 +69,33 @@ class RegistrationForm extends React.Component {
 				<form className="sign-up" onSubmit={this.handleSubmit}>
 					<fieldset>
 
+					<legend> 
+							{ goal 
+							? 	'Ready to make this win yours?'
+							: 'Ready for some wins of your own?' }
+					</legend>
+
 					<div role='alert' className='form-error'>
           				{error && <p>{error}</p>}
         			</div>
 
-						<legend> 
-							{ goal 
-							? 	'Ready to make this win yours?'
-							: 'Ready for some wins of your own?' }
-						</legend>
-
 						<div className="form-group">
 							<label htmlFor="full_name">Name</label>
-							<input type="text" name="full_name" placeholder='Salem Chestnut' required/>
+							<input type="text" name="full_name"
+							id="full_name"
+							 placeholder='Salem Chestnut' required/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="user_name">Username</label>
-							<input type="text" name="user_name" placeholder='Saybae0913' required/>
+							<input type="text" name="user_name"
+							id="user_name" placeholder='Saybae0913' required/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="password">Password </label>
-							<input type="password" name="password" 
+							<input type="password" name="password"
+							id="password" 
 							onChange={(e) => {
 								this.setState({pwTouched: true,
 								pwValidated: this.validatePw(e.target.value)});
@@ -100,7 +104,8 @@ class RegistrationForm extends React.Component {
 
 						<div className="form-group">
 							<label htmlFor="confirm_password">Confirm Password</label>
-							<input type="password" name="confirm_password" required/>
+							<input type="password" name="confirm_password"
+							id="confirm_password" required/>
 						</div>
 						<div className='helper-text'>{this.state.pwTouched && this.state.pwValidated && 'Password must contain 1 upper case, lower case, number and special character'}</div>
 

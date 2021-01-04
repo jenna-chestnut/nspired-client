@@ -38,7 +38,7 @@ class GoalListItem extends React.Component {
     `/view-goal/${id}`
 
       return (
-        <li className="win-item">
+        <div className="win-item">
         <h3>{this.renderGoalTitle(link)}</h3>
         <span>{
         toDo ? this.renderTimeLeft()
@@ -49,7 +49,7 @@ class GoalListItem extends React.Component {
         :
         <>Created by: {creator || <i>User deleted</i>}</>
         }</span>
-        </li>
+        </div>
       )
     }
 }

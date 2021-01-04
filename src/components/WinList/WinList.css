@@ -3,12 +3,12 @@
     margin: 0 25px;
 }
 
-.win-wall .win-list {
+.win-list {
     margin: 20px auto;
 }
 
-.win-list {
-    padding-left: 0;
+.win-wall .win-list {
+    margin: 20px auto;
 }
 
 @media all and (min-width:600px) {

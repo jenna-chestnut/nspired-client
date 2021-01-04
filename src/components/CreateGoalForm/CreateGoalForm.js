@@ -140,7 +140,7 @@ class CreateGoalForm extends React.Component {
 				<fieldset>
 					{this.renderTitle()}
 
-					<label htmlFor="expiration">
+					<label>
 						When would you like to achieve this goal?
 					</label>
 

@@ -24,7 +24,7 @@ class WinWin extends React.Component {
   render() {
       return (
         <button onClick={(e) => this.handleComplete(e, this.props.id)}
-        id="win-win">
+        className="win-win">
           <FontAwesomeIcon className='d-green' icon='check'/>
           </button>
       );

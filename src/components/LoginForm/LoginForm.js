@@ -38,20 +38,21 @@ class LoginForm extends React.Component {
 		return (
 			<form className="log-in" onSubmit={this.handleSubmit}>
 				<fieldset>
+				<legend>Log In</legend>
 				<div role='alert' className='form-error'>
           			{error && <p>{error}</p>}
         		</div>
 
-					<legend>Log In</legend>
-
 					<div className="form-group">
 						<label htmlFor="user_name">Username</label>
-						<input type="text" name="user_name" placeholder='GoGetter498' required/>
+						<input type="text" name="user_name"
+						id="user_name" placeholder='GoGetter498' required/>
 					</div>
 
 					<div className="form-group">
 						<label htmlFor="password">Password</label>
-						<input type="password" name="password" required/>
+						<input type="password" name="password"
+						id="password" required/>
 					</div>
 
 					<button type="submit">Submit</button>

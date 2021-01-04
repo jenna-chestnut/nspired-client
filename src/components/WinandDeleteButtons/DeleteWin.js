@@ -24,7 +24,7 @@ class DeleteWin extends React.Component {
   render() {
       return (
         <button onClick={(e) => this.handleDelete(e, this.props.id)} 
-        id="delete-win">
+        className="delete-win">
           <FontAwesomeIcon className='d-red' icon='times'/>
         </button>
       );

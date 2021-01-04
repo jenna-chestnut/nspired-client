@@ -37,7 +37,7 @@
     overflow: scroll;
 }
 
-.dashboard #delete-win, .dashboard #win-win {
+.dashboard .delete-win, .dashboard .win-win {
     padding: 15px 0 0 0;
 }
 
@@ -66,13 +66,13 @@
     margin-top: 15px;
 }
 
-#delete-win:hover {
+.delete-win:hover {
     background-color: transparent;
     border-radius: 35px;
     box-shadow: 0 5px 15px rgba(255, 73, 143, 0.4);
 }
 
-#win-win:hover {
+.win-win:hover {
     background-color: transparent;
     box-shadow: 0 5px 15px rgba(94, 255, 73, 0.4);
 }
@@ -95,7 +95,7 @@
 }
 
 @media all and (min-width: 600px) {
-    .dashboard #delete-win, .dashboard #win-win {
+    .dashboard .delete-win, .dashboard .win-win {
         padding: 0pc;
     }
 }
@@ -106,13 +106,13 @@
         height: 150px;
         margin: 0 auto;
     }
-    .dashboard #delete-win, .dashboard #win-win {
+    .dashboard .delete-win, .dashboard .win-win {
         position: absolute;
     }
-    .dashboard #delete-win {
+    .dashboard .delete-win {
         margin-top: 70px;
     }
-    .dashboard #win-win {
+    .dashboard .win-win {
         margin-top: 15px;
     }
     .dashboard .win-item h3 {
