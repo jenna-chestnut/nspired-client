@@ -18,17 +18,19 @@ export default function getTimeLeft(expiration) {
       case (daysDiff >= 2 && daysDiff < 5) :
         dateColor = 'gold';
         break;
-      case (daysDiff <= 1) :
+      case (daysDiff <= 1 && daysDiff > 0) :
         dateColor = 'red';
         break;
       case (daysDiff < 0) :
-        dateColor = 'grey';
+        dateColor = '#00000090';
         timeLeft = `Goal expired`;
         break;
       default:
         dateColor = 'black';
         break;
     }
+
+    console.log(daysDiff < 0);
 
     return <span style={{color: dateColor}}>
               {timeLeft}
