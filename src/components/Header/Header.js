@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import InspoQuote from '../InspoQuote/InspoQuote';
+import DemoUser from '../DemoUserButton/DemoUser';
 
 class Header extends React.Component {
   static contextType = NSpiredContext;
@@ -21,6 +22,10 @@ class Header extends React.Component {
           to='/'>
           Logout
         </Link>
+        <Link to="/dashboard">
+          <FontAwesomeIcon icon='tasks' className='d-green home'
+          title='Dashboard'/>
+        </Link>
       </>
     )
   }
@@ -36,6 +41,7 @@ class Header extends React.Component {
           to='/sign-up' onClick={() => this.context.clearGoal()}>
           Sign-Up
         </Link>
+        <DemoUser history={this.props.history}/>
       </>
     )
   }
@@ -44,6 +50,7 @@ class Header extends React.Component {
     const links = TokenService.hasAuthToken()
       ? this.renderLogoutLink()
       : this.renderLoginLink();
+
       return (
         <header className="h-group">
         <h1 className="item">
@@ -52,10 +59,6 @@ class Header extends React.Component {
         <nav>
         <Link to="/win-wall">Win Wall</Link>
         { links }
-        <Link to="/dashboard">
-          <FontAwesomeIcon icon='tasks' className='d-green home'
-          title='Dashboard'/>
-        </Link>
         </nav>
         <InspoQuote />
         </header>
