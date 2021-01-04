@@ -1,0 +1,15 @@
+.demo-user {
+    background-color: #315E36;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.demo-user:hover {
+    background-color: #82c91e;
+}
+
+@media all and (min-width: 600px) {
+    .demo-user {
+        font-size: 30px;
+    }
+}
