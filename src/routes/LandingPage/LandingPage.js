@@ -5,27 +5,34 @@ import WinList from '../../components/WinList/WinList';
 import GoalsApiService from '../../services/goals-api-service';
 import NSpiredContext from '../../contexts/NSpiredContext';
 import TokenService from '../../services/token-service';
+import loadingImg from '../../images/loading.gif';
 
 class LandingPage extends React.Component {
 	static contextType = NSpiredContext;
+
+	state = { loading: true }
 
 	componentDidMount() {
 		this.context.clearError();
 
 		GoalsApiService.getMiniWinWall()
 			.then(this.context.setWinWall)
+			.then(() => this.setState({ loading : false}))
 			.catch(this.context.setError);
 	}
 
 	renderWinList = () => {
 		const { winWall = [] } = this.context;
 
-		return winWall.map(win =>
+		return winWall.length
+		? winWall.map(win =>
 			<GoalPublicWin 
 			key={win.id}
 			win={win}
 			/>
-			);
+			)
+		: <div className='loading'><h3>L o a d i n g . . .</h3>
+		<img src={loadingImg} alt='loading' /></div>
 	}
 
 	renderButtonText = () => {
@@ -36,9 +43,13 @@ class LandingPage extends React.Component {
 
 	render() {
 		const { history } = this.props;
+		const winWall = this.state.loading 
+		? <div className='loading'><h3>L o a d i n g . . .</h3>
+		<img src={loadingImg} alt='loading' /></div>
+		: this.renderWinList()
 		
 		return (
-			<>
+			<h3>
 				<div className="landing-page">
 					<div className="nspired-intro">
 						<p>&#128197; Create goals.</p>
@@ -52,11 +63,11 @@ class LandingPage extends React.Component {
 					<div className="item winwall">
 						<WinList>
 							<p>Top Wins</p>
-							{this.renderWinList()}
+							{winWall}
 						</WinList>
 					</div>
 				</div>
-			</>
+			</h3>
 		);
 	}
 }

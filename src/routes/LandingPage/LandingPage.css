@@ -27,6 +27,17 @@
    margin: 10px;
 }
 
+.loading {
+    color: slategray;
+    text-align: center;
+}
+
+.loading img {
+    max-width: 70px;
+    max-height: 70px;
+    margin: auto;
+}
+
 .winwall .win-list p {
     font-size: 30px;
     letter-spacing: 2px;
